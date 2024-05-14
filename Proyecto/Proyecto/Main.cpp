@@ -1,5 +1,5 @@
 /*
-Práctica 7: Iluminación 1 
+Práctica 7: Iluminación 1
 */
 //para cargar imagen
 #define STB_IMAGE_IMPLEMENTATION
@@ -34,6 +34,10 @@ Práctica 7: Iluminación 1
 #include "PointLight.h"
 #include "SpotLight.h"
 #include "Material.h"
+
+//para obtener el tiempo del sistema.
+#include "time.h"
+
 const float toRadians = 3.14159265f / 180.0f;
 
 Window mainWindow;
@@ -48,6 +52,7 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 
+//modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
 Model Llanta_M;
 Model Blackhawk_M;
@@ -67,10 +72,17 @@ Model Spider_M;
 Model Light_M;
 Model Car_M;
 
-Skybox skybox;
+//modelos del univero de phineas  ferb models
+Model Inator_M;
+Model EdiDodu_M;
+Model House_M;
+Model Banco_M;
 
-//para el skybox de noche 
-Skybox skyboxNight; 
+//skyboxs para cada perio del dia: dia, tarde, noche, amanecer
+Skybox skyboxDia;
+Skybox skyboxTarde;
+Skybox skyboxNoche;
+Skybox skyboxAmanecer;
 
 //materiales
 Material Material_brillante;
@@ -81,6 +93,10 @@ Material Material_opaco;
 GLfloat deltaTime = 0.0f;
 GLfloat lastTime = 0.0f;
 static double limitFPS = 1.0 / 60.0;
+
+//variable para el tiempo, se utilizara para medir el tiempo de noche a dia de mejor manera
+clock_t inicio, fin;
+GLdouble periodoUso;
 
 // luz direccional
 DirectionalLight mainLight;
@@ -174,16 +190,16 @@ void CreateObjects()
 
 
 	};
-	
-	Mesh *obj1 = new Mesh();
+
+	Mesh* obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj1);
 
-	Mesh *obj2 = new Mesh();
+	Mesh* obj2 = new Mesh();
 	obj2->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj2);
 
-	Mesh *obj3 = new Mesh();
+	Mesh* obj3 = new Mesh();
 	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
 	meshList.push_back(obj3);
 
@@ -200,7 +216,7 @@ void CreateObjects()
 
 void CreateShaders()
 {
-	Shader *shader1 = new Shader();
+	Shader* shader1 = new Shader();
 	shader1->CreateFromFiles(vShader, fShader);
 	shaderList.push_back(*shader1);
 }
@@ -282,39 +298,67 @@ int main()
 	Car_M = Model();
 	Car_M.LoadModel("Models/Alberto/car.obj");
 
-	std::vector<std::string> skyboxFaces;
-	//se cargan las imagenes de nuestro skybox 
-	/*
-	skyboxFaces.push_back("Textures/Skybox/right.tga");
-	skyboxFaces.push_back("Textures/Skybox/left.tga");
-	skyboxFaces.push_back("Textures/Skybox/down.tga");
-	skyboxFaces.push_back("Textures/Skybox/up.tga");
-	skyboxFaces.push_back("Textures/Skybox/back.tga");//350
-	skyboxFaces.push_back("Textures/Skybox/front.tga");
-	*/
+	//modelos del univero de phineas y ferb 
+	Inator_M = Model();
+	Inator_M.LoadModel("Models/Roberto/inator.obj");
 
-	skyboxFaces.push_back("Textures/Skybox/rightDia.tga");
-	skyboxFaces.push_back("Textures/Skybox/leftDia.tga");
-	skyboxFaces.push_back("Textures/Skybox/downDia.tga");
-	skyboxFaces.push_back("Textures/Skybox/upDia.tga");
-	skyboxFaces.push_back("Textures/Skybox/backDia.tga");
-	skyboxFaces.push_back("Textures/Skybox/frontDia.tga");
+	EdiDodu_M = Model();
+	EdiDodu_M.LoadModel("Models/Roberto/EdoDufusFinal.obj");
 
-	skybox = Skybox(skyboxFaces);
+	House_M = Model();
+	House_M.LoadModel("Models/Roberto/casaFinal2PhienasFerb.obj");
 
-	//en este apartado cargaremos una nueva textura para el skybox
-	///////////////////////////////////////////////////////////////////
-	std::vector<std::string> skyboxFaces1;
-	skyboxFaces1.push_back("Textures/Skybox/rightNoche.tga");
-	skyboxFaces1.push_back("Textures/Skybox/leftNoche.tga");
-	skyboxFaces1.push_back("Textures/Skybox/downNoche.tga");
-	skyboxFaces1.push_back("Textures/Skybox/upNoche.tga");
-	skyboxFaces1.push_back("Textures/Skybox/backNoche.tga");
-	skyboxFaces1.push_back("Textures/Skybox/frontNoche.tga");
+	Banco_M = Model();
+	Banco_M.LoadModel("Models/Roberto/bancoText.obj");
 
-	skyboxNight = Skybox(skyboxFaces1);
+	//se cargan nuestras skybox
+	//dia
+	std::vector<std::string> skyboxFacesDia;
 
-	///////////////////////////////////////////////////////////////////
+	skyboxFacesDia.push_back("Textures/Skybox/rightDia.tga");
+	skyboxFacesDia.push_back("Textures/Skybox/leftDia.tga");
+	skyboxFacesDia.push_back("Textures/Skybox/downDia.tga");
+	skyboxFacesDia.push_back("Textures/Skybox/upDia.tga");
+	skyboxFacesDia.push_back("Textures/Skybox/backDia.tga");
+	skyboxFacesDia.push_back("Textures/Skybox/frontDia.tga");
+
+	skyboxDia = Skybox(skyboxFacesDia);
+
+	//tarde
+	std::vector<std::string> skyboxFacesTarde;
+
+	skyboxFacesTarde.push_back("Textures/Skybox/rightAtardecer.tga");
+	skyboxFacesTarde.push_back("Textures/Skybox/leftAtardecer.tga");
+	skyboxFacesTarde.push_back("Textures/Skybox/downTarde.tga");
+	skyboxFacesTarde.push_back("Textures/Skybox/upAtardecer.tga");
+	skyboxFacesTarde.push_back("Textures/Skybox/backAtardecer.tga");
+	skyboxFacesTarde.push_back("Textures/Skybox/frontAtardecer.tga");
+
+	skyboxTarde = Skybox(skyboxFacesTarde);
+
+	//noche
+	std::vector<std::string> skyboxFacesNoche;
+
+	skyboxFacesNoche.push_back("Textures/Skybox/rightNoche.tga");
+	skyboxFacesNoche.push_back("Textures/Skybox/leftNoche.tga");
+	skyboxFacesNoche.push_back("Textures/Skybox/downNoche.tga");
+	skyboxFacesNoche.push_back("Textures/Skybox/upNoche.tga");
+	skyboxFacesNoche.push_back("Textures/Skybox/backNoche.tga");
+	skyboxFacesNoche.push_back("Textures/Skybox/frontNoche.tga");
+
+	skyboxNoche = Skybox(skyboxFacesNoche);
+
+	//amanecer
+	std::vector<std::string> skyboxFacesAmanecer;
+
+	skyboxFacesAmanecer.push_back("Textures/Skybox/rightAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/leftAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/downAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/upAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/backAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/frontAmanecer.tga");
+
+	skyboxAmanecer = Skybox(skyboxFacesAmanecer);
 
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
@@ -351,7 +395,7 @@ int main()
 		1.0f, 0.0f, 0.0f,
 		15.0f);
 	spotLightCount++;
-	
+
 	//se crean mas luces puntuales y spotlight 
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
@@ -359,6 +403,10 @@ int main()
 	GLuint uniformColor = 0;
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
 	////Loop mientras no se cierra la ventana
+
+
+	//obtener el tiempo de incio
+	inicio = clock();
 	while (!mainWindow.getShouldClose())
 	{
 		GLfloat now = glfwGetTime();
@@ -378,11 +426,17 @@ int main()
 		//ademas implementamos lo de la tarde 
 
 		//Para apagar el pollo
-		if (mainWindow.getCambioNoche() == 1.0f) {
-			skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+		if (periodoUso <= 5.0) {
+			skyboxDia.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
-		else {
-			skyboxNight.DrawSkybox(camera.calculateViewMatrix(), projection);
+		else if (periodoUso <= 10.0) {
+			skyboxTarde.DrawSkybox(camera.calculateViewMatrix(), projection);
+		}
+		else if (periodoUso <= 15.0) {
+			skyboxNoche.DrawSkybox(camera.calculateViewMatrix(), projection);
+		}
+		else if (periodoUso <= 20.0) {
+			skyboxAmanecer.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
 
 		shaderList[0].UseShader();
@@ -391,7 +445,7 @@ int main()
 		uniformView = shaderList[0].GetViewLocation();
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
-		
+
 		//información en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
@@ -402,7 +456,7 @@ int main()
 
 		// luz ligada a la cámara de tipo flash
 		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
-			glm::vec3 lowerLight = camera.getCameraPosition();
+		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
@@ -470,7 +524,7 @@ int main()
 		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Llanta_M.RenderModel();
-	
+
 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 6.0));
@@ -957,7 +1011,7 @@ int main()
 		model = glm::translate(model, glm::vec3(1.0f, -1.21f, 34.0));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Flor_M.RenderModel();
-		
+
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		model = glm::translate(model, glm::vec3(8.0f, -1.21f, 35.0));
@@ -1037,12 +1091,68 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
 
+		/////////////////////////////////////////////////////////Univero de phienas y ferb
+		//edificio
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-285.0f, 2.0f, -285.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 20.0f, 15.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		EdiDodu_M.RenderModel();
+
+		//casa
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(75.0f, -14.5f, -260.0f));
+		//model = glm::rotate(model, glm::radians(-165.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		House_M.RenderModel();
+
+
+		//invento
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(80.0f, 1.0f, -100.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Inator_M.RenderModel();
+
+		//Banco de parque
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(80.0f, -2.0f, -50.0f));
+		model = glm::rotate(model, glm::radians(-180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Banco_M.RenderModel();
+
+		//Banco de parque
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, -2.0f, -100.0f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Banco_M.RenderModel();
+
+		//Banco de parque
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(20.0f, -2.0f, -100.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Banco_M.RenderModel();
+
+		//Banco de parque
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(80.0f, -2.0f, -150.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Banco_M.RenderModel();
+
 		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -4.0f));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		
+
 		//blending: transparencia o traslucidez
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -1050,6 +1160,20 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		meshList[3]->RenderMesh();
 		glDisable(GL_BLEND);
+
+
+		//pero necesitammos realizar un reset al periodo de uso para poder realizar un cambio entre
+		//dia, tarde, noche, amanecer
+		if (periodoUso <= 20.0) {
+			fin = clock();
+			periodoUso = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
+			printf("\nPeriodo usado del cpu %f segundos", periodoUso);
+		}
+		else {
+			inicio = clock();
+			periodoUso = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
+		}
+
 
 		glUseProgram(0);
 
