@@ -1,7 +1,4 @@
-/*
-Práctica 7: Iluminación 1
-*/
-//para cargar imagen
+
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <stdio.h>
@@ -53,6 +50,10 @@ Texture pisoTexture;
 Texture AgaveTexture;
 //parque la mexicana
 Texture sueloMexicana;
+
+
+//modelos del universo de club penguin
+Model pizzeria;
 
 //modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
@@ -261,6 +262,12 @@ int main()
 	//la mexicana
 	sueloMexicana = Texture("Textures/sueloMexicana.tga");
 	sueloMexicana.LoadTextureA();
+
+
+	//club penguin
+	pizzeria = Model();
+	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
+
 
 
 	Kitt_M = Model();
@@ -1108,7 +1115,20 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
 
-		/////////////////////////////////////////////////////////Univero de phienas y ferb
+
+		//---------- Universo de Club Penguin O> ----------//
+
+		//pizzeria
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		pizzeria.RenderModel();
+
+
+
+		/////////////////////////////////////////////////////////Univero de phienas y ferb/////////////////////////////////////////////////////////////////////
 		//edificio
 		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
 		model = glm::mat4(1.0);
@@ -1248,6 +1268,9 @@ int main()
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Banco_M.RenderModel();
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
 		model = glm::mat4(1.0);
