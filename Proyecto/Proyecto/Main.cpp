@@ -51,6 +51,8 @@ Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
+//parque la mexicana
+Texture sueloMexicana;
 
 //modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
@@ -77,6 +79,8 @@ Model Inator_M;
 Model EdiDodu_M;
 Model House_M;
 Model Banco_M;
+Model Ballony_M;
+Model Bambu_M;
 
 //skyboxs para cada perio del dia: dia, tarde, noche, amanecer
 Skybox skyboxDia;
@@ -240,7 +244,7 @@ int main()
 	GlFloat velocidad de vuelta o de giro
 	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
 	*/
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.6f, 0.5f);//0.6->0.3 velocidad de desplazamienot
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -252,6 +256,12 @@ int main()
 	pisoTexture.LoadTextureA();
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
+
+
+	//la mexicana
+	sueloMexicana = Texture("Textures/sueloMexicana.tga");
+	sueloMexicana.LoadTextureA();
+
 
 	Kitt_M = Model();
 	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
@@ -311,6 +321,13 @@ int main()
 	Banco_M = Model();
 	Banco_M.LoadModel("Models/Roberto/bancoText.obj");
 
+	Ballony_M = Model();
+	Ballony_M.LoadModel("Models/Roberto/ballonyFinal.obj");
+
+	Bambu_M = Model();
+	Bambu_M.LoadModel("Models/Roberto/bambufinal.obj");
+
+
 	//se cargan nuestras skybox
 	//dia
 	std::vector<std::string> skyboxFacesDia;
@@ -352,7 +369,7 @@ int main()
 	std::vector<std::string> skyboxFacesAmanecer;
 
 	skyboxFacesAmanecer.push_back("Textures/Skybox/rightAmanecer.tga");
-	skyboxFacesAmanecer.push_back("Textures/Skybox/leftAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/leftAmancer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/downAmanecer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/upAmanecer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/backAmanecer.tga");
@@ -425,7 +442,7 @@ int main()
 		//comentamos esta para ver que desaparece el skybox
 		//ademas implementamos lo de la tarde 
 
-		//Para apagar el pollo
+		//PARA DAR LA ILUCION DE TIEMPO DIA A NOCHE 
 		if (periodoUso <= 5.0) {
 			skyboxDia.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
@@ -477,7 +494,7 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		pisoTexture.UseTexture();
+		sueloMexicana.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
@@ -1093,20 +1110,105 @@ int main()
 
 		/////////////////////////////////////////////////////////Univero de phienas y ferb
 		//edificio
+		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-285.0f, 2.0f, -285.0f));
 		model = glm::scale(model, glm::vec3(15.0f, 20.0f, 15.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); 
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		EdiDodu_M.RenderModel();
+		glDisable(GL_BLEND);
 
 		//casa
+		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.0f, -14.5f, -260.0f));
+		model = glm::translate(model, glm::vec3(75.0f, -14.5f, -275.0f));
 		//model = glm::rotate(model, glm::radians(-165.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		House_M.RenderModel();
+		glDisable(GL_BLEND);
 
+		//ballony
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-80.0f, 1.0f, -100.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballony_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(260.0f, 0.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(240.0f, 0.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(220.0f, 1.0f, -120.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 1.0f, -120.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(180.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(160.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(120.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
 
 		//invento
 		model = glm::mat4(1.0);
@@ -1167,7 +1269,8 @@ int main()
 		if (periodoUso <= 20.0) {
 			fin = clock();
 			periodoUso = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
-			printf("\nPeriodo usado del cpu %f segundos", periodoUso);
+			//para vererificar que si se realiza el reset de manera adecuada
+			//printf("\nPeriodo usado del cpu %f segundos", periodoUso);
 		}
 		else {
 			inicio = clock();
