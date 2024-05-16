@@ -59,6 +59,11 @@ Texture pisoSkate;
 
 //modelos del universo de club penguin
 Model pizzeria;
+Model snow;
+Model puffleC;
+Model puffleO;
+Model puffleG;
+Model puffleR;
 
 //modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
@@ -288,6 +293,21 @@ int main()
 	//club penguin
 	pizzeria = Model();
 	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
+
+	snow = Model();
+	snow.LoadModel("Models/Daniel/snow/snow.obj");
+
+	puffleC = Model();
+	puffleC.LoadModel("Models/Daniel/puffle/puffleC.obj");
+
+	puffleG = Model();
+	puffleG.LoadModel("Models/Daniel/puffle/puffleG.obj");
+
+	puffleO = Model();
+	puffleO.LoadModel("Models/Daniel/puffle/puffleO.obj");
+
+	puffleR = Model();
+	puffleR.LoadModel("Models/Daniel/puffle/puffleR.obj");
 
 
 
@@ -1459,6 +1479,43 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pizzeria.RenderModel();
+
+		//snow
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		snow.RenderModel();
+
+		//puffles
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 50.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleC.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleG.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleO.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, -10.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleR.RenderModel();
 
 
 

@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\danny\\Downloads\\CGPROYECTO\\Proyecto\\Proyecto\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\danny\\Downloads\\CGPROYECTO\\Proyecto\\Proyecto\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Texture.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Texture.cpp",
+              "DocumentMoniker": "C:\\Users\\danny\\Downloads\\CGPROYECTO\\Proyecto\\Proyecto\\Texture.cpp",
+              "RelativeDocumentMoniker": "Proyecto\\Texture.cpp",
+              "ToolTip": "C:\\Users\\danny\\Downloads\\CGPROYECTO\\Proyecto\\Proyecto\\Texture.cpp",
+              "RelativeToolTip": "Proyecto\\Texture.cpp",
+              "ViewState": "AQIAACMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-16T02:02:27.806Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "Proyecto\\Main.cpp",
               "ToolTip": "C:\\Users\\danny\\Downloads\\CGPROYECTO\\Proyecto\\Proyecto\\Main.cpp",
               "RelativeToolTip": "Proyecto\\Main.cpp",
-              "ViewState": "AQIAAO8AAAAAAAAAAAAAAPkAAAAdAAAA",
+              "ViewState": "AQIAABcBAAAAAAAAAAAAACkBAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-13T21:03:58.745Z",
               "EditorCaption": ""
