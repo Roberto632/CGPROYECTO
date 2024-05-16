@@ -60,10 +60,33 @@ Texture pisoSkate;
 //modelos del universo de club penguin
 Model pizzeria;
 Model snow;
+
+//puffles
 Model puffleC;
 Model puffleO;
 Model puffleG;
 Model puffleR;
+
+//tirolesa
+Model zipB;
+Model zipC;
+Model zipC1;
+
+//arbol
+Model tree;
+
+//sensei
+Model sensei;
+Model beard;
+Model wingL;
+Model wingR;
+
+//lamp
+Model lamp;
+
+//sign
+Model sign;
+
 
 //modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
@@ -308,6 +331,36 @@ int main()
 
 	puffleR = Model();
 	puffleR.LoadModel("Models/Daniel/puffle/puffleR.obj");
+
+	zipB = Model();
+	zipB.LoadModel("Models/Daniel/zip/zipB.obj");
+
+	zipC = Model();
+	zipC.LoadModel("Models/Daniel/zip/zipC.obj");
+
+	zipC1 = Model();
+	zipC1.LoadModel("Models/Daniel/zip/zipC1.obj");
+
+	tree = Model();
+	tree.LoadModel("Models/Daniel/tree/tree.obj");
+
+	sensei = Model();
+	sensei.LoadModel("Models/Daniel/sensei/bodyS.obj");
+
+	beard = Model();
+	beard.LoadModel("Models/Daniel/sensei/beardS.obj");
+
+	wingL = Model();
+	wingL.LoadModel("Models/Daniel/sensei/wingLS.obj");
+
+	wingR = Model();
+	wingR.LoadModel("Models/Daniel/sensei/wingRS.obj");
+
+	lamp= Model();
+	lamp.LoadModel("Models/Daniel/lamp/lampCP.obj");
+
+	sign = Model();
+	sign.LoadModel("Models/Daniel/sign/sign.obj");
 
 
 
@@ -1474,48 +1527,166 @@ int main()
 
 		//pizzeria
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 250.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pizzeria.RenderModel();
 
 		//snow
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, 240.0f));
+		model = glm::scale(model, glm::vec3(27.0f, 0.0f, 20.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		snow.RenderModel();
 
 		//puffles
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 50.0f));
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 100.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		puffleC.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 30.0f));
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 90.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		puffleG.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 10.0f));
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 80.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		puffleO.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, -10.0f));
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 70.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		puffleR.RenderModel();
+
+		//tirolesa
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipB.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipC.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipC1.RenderModel();
+
+		//outside
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, 300.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 15.0f, 15.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lamp.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sign.RenderModel();
+
+
+
+
+
+		//forest club penguin
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 20.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 17.0f, 15.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-600.0f, -1.0f, 20.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 15.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-600.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 12.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		//más árboles
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -1.0f, 200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 20.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-189.0f, -1.0f, 341.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-400.0f, -1.0f, 359.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		//sensei
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sensei.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		beard.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		wingL.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		wingR.RenderModel();
 
 
 
