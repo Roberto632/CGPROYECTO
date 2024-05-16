@@ -79,6 +79,18 @@ Model Leslie_M;
 Model Spider_M;
 Model Light_M;
 Model Car_M;
+
+//Variables Gumball
+GLfloat may = 0.0f;
+GLfloat max = 0.0f;
+GLfloat mcx = 0.0f;
+GLfloat mcz = 0.0f;
+GLfloat rc = 0.0f;
+glm::vec3 posic(180.0f, 0.0f, 40.0f);
+bool r1 = false;
+bool r2 = false;
+bool r3 = false;
+bool r4 = false;
 //<<<<<<< HEAD
 //=======
 
@@ -576,6 +588,33 @@ int main()
 		glm::mat4 modelaux(1.0);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
+
+		//Animaciones Gumball
+		//Animación Araña
+		if (mainWindow.getmovArana()) {
+			may = abs(3 * sin(glfwGetTime()));
+			if (max < 60.0) {
+				max += 0.0003 * glfwGetTime();
+			}
+			else {
+				max = 0.0;
+			}
+		}
+		else {
+			may = 0.0f;
+			max = 0.0f;
+		}
+
+		//Animación Carro
+		if (mainWindow.getr1()) {
+
+			if (mcz < 30.0) {
+				mcz += 0.0003 * glfwGetTime();
+			}
+			else {
+				mcz = 0.0;
+			}
+		}
 
 		//pasto la mexicana
 		model = glm::mat4(1.0);
@@ -1482,14 +1521,16 @@ int main()
 
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-		model = glm::translate(model, glm::vec3(60.0f, 4.2f, 90.0f));
+		model = glm::translate(model, glm::vec3(57.0f + max, 1.9f + may, 127.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Spider_M.RenderModel();
 
 		//Carro
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
-		model = glm::translate(model, glm::vec3(180.0f, 0.0f, 50.0f));
+		model = glm::translate(model, posic + glm::vec3(0.0f, 0.0f, mcz));
+		model = glm::rotate(model, glm::radians(rc), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
 
@@ -1682,567 +1723,6 @@ int main()
 
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-		
-		
-
-
-
-		//Árboles Gumball
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(45.0f, -0.15f, 45.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(20.0f, -0.15f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(30.0f, -0.15f, 20.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.15f, 40.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(40.0f, -0.15f, 0.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(35.0f, -0.15f, 15.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(25.0f, -0.15f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(45.0f, -0.15f, 35.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(15.0f, -0.15f, 15.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -0.15f, 25.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(10.0f, -0.15f, 33.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -0.15f, 5.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(12.0f, -0.15f, 13.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(18.0f, -0.15f, 3.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(3.0f, -0.15f, 1.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(33.0f, -0.15f, 23.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(8.0f, -0.15f, 8.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -0.15f, 35.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(25.0f, -0.15f, 14.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(10.0f, -0.15f, 29.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(12.0f, -0.15f, 22.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.15f, 25.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.15f, 19.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(1.0f, -0.15f, 14.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(0.0f, -0.15f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -0.15f, 21.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(33.0f, -0.15f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(39.0f, -0.15f, 19.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(35.0f, -0.15f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(41.0f, -0.15f, 23.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbol_M.RenderModel();
-
-
-
-
-
-
-		//Arbustos Gumball
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(50.0f, -0.3f, 5.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(20.0f, -0.3f, 5.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(60.0f, -0.3f, 5.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(10.0f, -0.3f, 5.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -0.3f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(15.0f, -0.3f, 12.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(26.0f, -0.3f, 8.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(37.0f, -0.3f, 13.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(48.0f, -0.3f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(8.0f, -0.3f, 20.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(13.0f, -0.3f, 23.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(20.0f, -0.3f, 18.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(30.0f, -0.3f, 21.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(48.0f, -0.3f, 25.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(1.0f, -0.3f, 29.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(18.0f, -0.3f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(30.0f, -0.3f, 33.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(48.0f, -0.3f, 31.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(55.0f, -0.3f, 32.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(3.0f, -0.3f, 42.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(18.0f, -0.3f, 45.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(27.0f, -0.3f, 46.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(35.0f, -0.3f, 43.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(50.0f, -0.3f, 44.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Arbusto_M.RenderModel();
-
-
-
-
-
-		//Juegos
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
-		model = glm::translate(model, glm::vec3(45.0f, -0.3f, 45.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego1_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-		model = glm::translate(model, glm::vec3(50.0f, -0.3f, 35.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego2_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, 2.9f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego31_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, 2.9f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego32_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, 2.9f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego33_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, 2.9f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Juego34_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(-30.0f, -2.5f, -45.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Puestos_M.RenderModel();
-
-
-		//Flores
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(5.0f, -1.21f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(10.0f, -1.21f, 12.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(15.0f, -1.21f, 13.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(20.0f, -1.21f, 9.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, -1.21f, 11.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(37.0f, -1.21f, 9.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(45.0f, -1.21f, 12.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(50.0f, -1.21f, 10.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(3.0f, -1.21f, 23.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(8.0f, -1.21f, 22.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(15.0f, -1.21f, 25.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(25.0f, -1.21f, 24.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(35.0f, -1.21f, 21.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(40.0f, -1.21f, 26.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(55.0f, -1.21f, 27.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(1.0f, -1.21f, 34.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-		
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(8.0f, -1.21f, 35.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(16.0f, -1.21f, 37.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(28.0f, -1.21f, 38.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(33.0f, -1.21f, 40.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(46.0f, -1.21f, 34.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
-		model = glm::translate(model, glm::vec3(54.0f, -1.21f, 36.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Flor_M.RenderModel();
-
-
-
-		//Lights
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(42.0f, -0.15f, 43.0));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Light_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(18.0f, -0.15f, 43.0));
-		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Light_M.RenderModel();
-
-		//Personajes
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(20.0f, 0.7f, 30.0));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Darwin_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-		model = glm::translate(model, glm::vec3(50.0f, 1.2f, 35.5f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Leslie_M.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
-		model = glm::translate(model, glm::vec3(60.0f, 4.2f, 90.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Spider_M.RenderModel();
-
-		//Carro
-		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
-		model = glm::translate(model, glm::vec3(180.0f, 0.0f, 50.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Car_M.RenderModel();
 
 		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
 		model = glm::mat4(1.0);

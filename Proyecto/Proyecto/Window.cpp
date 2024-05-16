@@ -14,6 +14,7 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	width = windowWidth;
 	height = windowHeight;
 	muevex = 2.0f;
+	movArana = 0.0f;
 
 	//cambio de noche +
 
@@ -116,6 +117,14 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	if (key == GLFW_KEY_U)
 	{
 		theWindow->muevex -= 1.0;
+	}
+	if (key == GLFW_KEY_Z)
+	{
+		theWindow->movArana = true;
+	}
+	if (key == GLFW_KEY_X)
+	{
+		theWindow->r1 = true;
 	}
 
 	///cambio noche 

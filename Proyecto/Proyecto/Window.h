@@ -14,6 +14,8 @@ public:
 	GLfloat getXChange();
 	GLfloat getYChange();
 	GLfloat getmuevex() { return muevex; }
+	GLfloat getmovArana() { return movArana; }
+	GLfloat getr1() { return r1; }
 
 	//para cambiar de dia a noche
 
@@ -36,6 +38,9 @@ private:
 	GLfloat xChange;
 	GLfloat yChange;
 	GLfloat muevex;
+	bool movArana;
+	bool r1 = false;
+
 	//variable para cambiar de dia noche 
 	GLfloat cambiaNoche; 
 	bool mouseFirstMoved;
