@@ -1,3 +1,4 @@
+
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <stdio.h>
@@ -48,6 +49,14 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 
+//parque la mexicana
+Texture sueloMexicana;
+Texture mosaicoSuelo;
+Texture asfalto;
+Texture mosaico;
+Texture pisoSkate;
+
+
 //modelos del universo de club penguin
 Model pizzeria;
 
@@ -76,6 +85,16 @@ Model Inator_M;
 Model EdiDodu_M;
 Model House_M;
 Model Banco_M;
+Model Ballony_M;
+Model Bambu_M;
+//MODLEO AUTO PPHINEAS Y FERB
+Model AutoCarcas_M;
+Model llanaDD_M;
+Model llanaDI_M;
+Model llanaTD_M;
+Model llanaTI_M;
+
+
 
 //skyboxs para cada perio del dia: dia, tarde, noche, amanecer
 Skybox skyboxDia;
@@ -239,12 +258,7 @@ int main()
 	GlFloat velocidad de vuelta o de giro
 	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
 	*/
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.3f, 0.5f);
-
-	//club penguin
-	pizzeria = Model();
-	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
-
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.9f, 0.5f);//0.9->0.3 velocidad de desplazamienot
 
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
@@ -256,6 +270,26 @@ int main()
 	pisoTexture.LoadTextureA();
 	AgaveTexture = Texture("Textures/Agave.tga");
 	AgaveTexture.LoadTextureA();
+
+
+	//la mexicana textura de suelos
+	sueloMexicana = Texture("Textures/sueloMexicana.tga");
+	sueloMexicana.LoadTextureA();
+	mosaicoSuelo = Texture("Textures/sueloMosaico.tga");
+	mosaicoSuelo.LoadTextureA();
+	asfalto = Texture("Textures/asfalto.tga");
+	asfalto.LoadTextureA();
+	mosaico = Texture("Textures/pisoBaño.tga");
+	mosaico.LoadTextureA();
+	pisoSkate = Texture("Textures/pisoSkate.tga");
+	pisoSkate.LoadTextureA();
+
+
+	//club penguin
+	pizzeria = Model();
+	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
+
+
 
 	Kitt_M = Model();
 	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
@@ -315,6 +349,28 @@ int main()
 	Banco_M = Model();
 	Banco_M.LoadModel("Models/Roberto/bancoText.obj");
 
+	Ballony_M = Model();
+	Ballony_M.LoadModel("Models/Roberto/ballonyFinal.obj");
+
+	Bambu_M = Model();
+	Bambu_M.LoadModel("Models/Roberto/bambufinal.obj");
+
+
+	AutoCarcas_M = Model();
+	AutoCarcas_M.LoadModel("Models/Roberto/autoCarcasaPF.obj");
+
+	llanaDD_M = Model();
+	llanaDD_M.LoadModel("Models/Roberto/llanataDD.obj");
+
+	llanaTD_M = Model();
+	llanaTD_M.LoadModel("Models/Roberto/llanataTD.obj");
+
+	llanaDI_M = Model();
+	llanaDI_M.LoadModel("Models/Roberto/llantaID.obj");
+
+	llanaTI_M = Model();
+	llanaTI_M.LoadModel("Models/Roberto/llanataTI.obj");
+
 	//se cargan nuestras skybox
 	//dia
 	std::vector<std::string> skyboxFacesDia;
@@ -356,7 +412,7 @@ int main()
 	std::vector<std::string> skyboxFacesAmanecer;
 
 	skyboxFacesAmanecer.push_back("Textures/Skybox/rightAmanecer.tga");
-	skyboxFacesAmanecer.push_back("Textures/Skybox/leftAmanecer.tga");
+	skyboxFacesAmanecer.push_back("Textures/Skybox/leftAmancer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/downAmanecer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/upAmanecer.tga");
 	skyboxFacesAmanecer.push_back("Textures/Skybox/backAmanecer.tga");
@@ -429,7 +485,8 @@ int main()
 		//comentamos esta para ver que desaparece el skybox
 		//ademas implementamos lo de la tarde 
 
-		//Para apagar el pollo
+		//PARA DAR LA ILUCION DE TIEMPO DIA A NOCHE
+		// por el momento solo esta a 5 segundos para comprobar que funcione de manmera adecuada 
 		if (periodoUso <= 5.0) {
 			skyboxDia.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
@@ -475,16 +532,366 @@ int main()
 		glm::mat4 modelaux(1.0);
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
+
+		//pasto la mexicana
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -1.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
+		model = glm::scale(model, glm::vec3(70.0f, 1.0f, 50.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		pisoTexture.UseTexture();
+		sueloMexicana.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
+
+		//suelo mosaico la mexicana 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -470.0f));
+		model = glm::scale(model, glm::vec3(70.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaicoSuelo.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//asfalto 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -380.0f));
+		model = glm::scale(model, glm::vec3(70.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		asfalto.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//asfalto 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -260.0f));
+		model = glm::scale(model, glm::vec3(70.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		asfalto.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//asfalto 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(670.0f, 0.0f, -320.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		asfalto.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//asfalto 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-670.0f, 0.0f, -320.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		asfalto.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -140.0f));
+		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -20.0f));
+		model = glm::scale(model, glm::vec3(25.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 470.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 410.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso baño 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 350.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		mosaico.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
 
 		//Árboles Gumball
 		model = glm::mat4(1.0);
@@ -1042,8 +1449,9 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
 
+
 		//---------- Universo de Club Penguin O> ----------//
-		
+
 		//pizzeria
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
@@ -1053,22 +1461,108 @@ int main()
 		pizzeria.RenderModel();
 
 
-		/////////////////////////////////////////////////////////Univero de phienas y ferb
+
+		/////////////////////////////////////////////////////////Univero de phienas y ferb/////////////////////////////////////////////////////////////////////
 		//edificio
+		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-285.0f, 2.0f, -285.0f));
 		model = glm::scale(model, glm::vec3(15.0f, 20.0f, 15.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		EdiDodu_M.RenderModel();
+		glDisable(GL_BLEND);
 
 		//casa
+		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(75.0f, -14.5f, -260.0f));
+		model = glm::translate(model, glm::vec3(75.0f, -14.5f, -275.0f));
 		//model = glm::rotate(model, glm::radians(-165.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		House_M.RenderModel();
+		glDisable(GL_BLEND);
 
+		//ballony
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-80.0f, 1.0f, -100.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Ballony_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(260.0f, 0.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(240.0f, 0.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(220.0f, 1.0f, -120.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 1.0f, -120.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(180.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(160.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(140.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
+
+		//bambu
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(120.0f, 1.0f, -120.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		//model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Bambu_M.RenderModel();
 
 		//invento
 		model = glm::mat4(1.0);
@@ -1109,6 +1603,46 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Banco_M.RenderModel();
 
+		//Auto
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(80.0f, -1.0f, -80.0f));
+		model = glm::scale(model, glm::vec3(1.2f, 1.2f, 1.2f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		modelaux = model;
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		AutoCarcas_M.RenderModel();
+
+		//llanata delantare derecha
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-5.0f, 1.8f, 10.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanaDD_M.RenderModel();
+
+		//llantta delanntera izquiera
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(5.0f, 1.8f, 10.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanaDI_M.RenderModel();
+
+		//llanta trasera derecha
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-5.0f, 1.8f, -6.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanaTD_M.RenderModel();
+
+		//llanta trasera izquierda
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(5.0f, 1.8f, -6.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		llanaTI_M.RenderModel();
+
+
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -4.0f));
@@ -1129,7 +1663,8 @@ int main()
 		if (periodoUso <= 20.0) {
 			fin = clock();
 			periodoUso = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
-			printf("\nPeriodo usado del cpu %f segundos", periodoUso);
+			//para vererificar que si se realiza el reset de manera adecuada
+			//printf("\nPeriodo usado del cpu %f segundos", periodoUso);
 		}
 		else {
 			inicio = clock();
