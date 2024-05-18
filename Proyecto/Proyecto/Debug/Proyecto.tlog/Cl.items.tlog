@@ -1,4 +1,3 @@
-
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Camera.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\Camera.obj
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\DirectionalLight.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\DirectionalLight.obj
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Light.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\Light.obj
@@ -13,19 +12,3 @@ C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Sphere.cpp;C:\Users
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\SpotLight.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\SpotLight.obj
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Texture.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\Texture.obj
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Window.cpp;C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Debug\Window.obj
-
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Camera.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Camera.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\DirectionalLight.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\DirectionalLight.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Light.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Light.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Main.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Material.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Material.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Mesh_tn.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Mesh_tn.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Model.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Model.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\PointLight.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Shader_light.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Skybox.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Skybox.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Sphere.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Sphere.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\SpotLight.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\SpotLight.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Texture.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Texture.obj
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Window.cpp;C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Debug\Window.obj
-

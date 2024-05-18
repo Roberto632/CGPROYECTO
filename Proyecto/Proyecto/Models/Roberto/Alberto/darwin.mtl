@@ -1,0 +1,143 @@
+newmtl lambert2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd eye.png
+Ni 1.00
+newmtl lambert3SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd eye.png
+Ni 1.00
+newmtl lambert4SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd voca.png
+Ni 1.00
+newmtl lambert6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl lambert7SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl lambert13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl pasted__lambert13SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl pasted__lambert13SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl pasted__pasted__lambert13SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd Spider.png
+Ni 1.00
+newmtl pasted__pasted__phong3SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd orange.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl pasted__phong3SG1
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd orange.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl pasted__phong5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PENUP_20240427_130941.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl pasted__phong6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PENUP_20240427_133620.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl phong1SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd orange.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 98.00
+newmtl phong2SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd colita.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl phong5SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PENUP_20240427_130941.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00
+newmtl phong6SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd PENUP_20240427_133620.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+map_Ks Specularcar.png
+Ns 18.00

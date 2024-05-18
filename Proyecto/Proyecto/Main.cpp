@@ -58,24 +58,7 @@ Texture pisoSkate;
 
 
 //modelos del universo de club penguin
-//pizzeria
 Model pizzeria;
-Model doorP;
-Model windowDP;
-Model windowP;
-
-//objetos de club penguin
-Model pizza;
-Model seat;
-Model tableCP;
-Model oven;
-Model ovenD;
-Model ovenG;
-Model bar;
-
-Model smoke; //está en la carpeta del horno
-
-//outside
 Model snow;
 
 //puffles
@@ -124,6 +107,11 @@ Model Leslie_M;
 Model Spider_M;
 Model Light_M;
 Model Car_M;
+Model RF_M;
+//Model R1_M;
+//Model R2_M;
+//Model R3_M;
+//Model R4_M;
 
 //Variables Gumball
 GLfloat may = 0.0f;
@@ -131,7 +119,9 @@ GLfloat max = 0.0f;
 GLfloat mcx = 0.0f;
 GLfloat mcz = 0.0f;
 GLfloat rc = 0.0f;
-glm::vec3 posic(180.0f, 0.0f, 40.0f);
+GLfloat rotJuego = 0.0f;
+GLfloat rotR = 0.0f;
+glm::vec3 posic(-180.0f, 0.5f, -180.0f);
 bool r1 = false;
 bool r2 = false;
 bool r3 = false;
@@ -346,47 +336,12 @@ int main()
 
 
 	//club penguin
-
-	//pizzeria
 	pizzeria = Model();
 	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
 
-	doorP = Model();
-	doorP.LoadModel("Models/Daniel/pizzeria/door.obj");
-
-	windowDP = Model();
-	windowDP.LoadModel("Models/Daniel/pizzeria/windowD.obj");
-
-	windowP = Model();
-	windowP.LoadModel("Models/Daniel/pizzeria/window.obj");
-
-	//objetos
-	pizza = Model();
-	pizza.LoadModel("Models/Daniel/pizza/pizza.obj");
-
-	seat = Model();
-	seat.LoadModel("Models/Daniel/seat/seat.obj");
-
-	tableCP = Model();
-	tableCP.LoadModel("Models/Daniel/table/table.obj");
-
-	oven = Model();
-	oven.LoadModel("Models/Daniel/oven/oven.obj");
-
-	ovenD = Model();
-	ovenD.LoadModel("Models/Daniel/oven/ovenD.obj");
-
-	ovenG = Model();
-	ovenG.LoadModel("Models/Daniel/oven/ovenG.obj");
-
-	bar = Model();
-	bar.LoadModel("Models/Daniel/bar/bar.obj");
-
-	//outside
 	snow = Model();
 	snow.LoadModel("Models/Daniel/snow/snow.obj");
 
-	//puffles
 	puffleC = Model();
 	puffleC.LoadModel("Models/Daniel/puffle/puffleC.obj");
 
@@ -399,7 +354,6 @@ int main()
 	puffleR = Model();
 	puffleR.LoadModel("Models/Daniel/puffle/puffleR.obj");
 
-	//tirolesa
 	zipB = Model();
 	zipB.LoadModel("Models/Daniel/zip/zipB.obj");
 
@@ -409,11 +363,9 @@ int main()
 	zipC1 = Model();
 	zipC1.LoadModel("Models/Daniel/zip/zipC1.obj");
 
-	//arbol
 	tree = Model();
 	tree.LoadModel("Models/Daniel/tree/tree.obj");
 
-	//avatar
 	sensei = Model();
 	sensei.LoadModel("Models/Daniel/sensei/bodyS.obj");
 
@@ -426,15 +378,13 @@ int main()
 	wingR = Model();
 	wingR.LoadModel("Models/Daniel/sensei/wingRS.obj");
 
-	//luminaria
 	lamp= Model();
 	lamp.LoadModel("Models/Daniel/lamp/lampCP.obj");
 
-	//letrero
 	sign = Model();
 	sign.LoadModel("Models/Daniel/sign/sign.obj");
 
-	//----- end club penguin univrse -----
+
 
 	Kitt_M = Model();
 	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
@@ -481,6 +431,18 @@ int main()
 
 	Car_M = Model();
 	Car_M.LoadModel("Models/Alberto/car.obj");
+
+	RF_M = Model();
+	RF_M.LoadModel("Models/Alberto/rf.obj");
+
+	/*R2_M = Model();
+	R2_M.LoadModel("Models/Alberto/r2.obj");
+
+	R3_M = Model();
+	R3_M.LoadModel("Models/Alberto/r3.obj");
+
+	R4_M = Model();
+	R4_M.LoadModel("Models/Alberto/r4.obj");*/
 //=======
 //>>>>>>> 96256336d13de02933bd449444bf4c16d1a55335
 
@@ -722,9 +684,9 @@ int main()
 		//Animaciones Gumball
 		//Animaciï¿½n Araï¿½a
 		if (mainWindow.getmovArana()) {
-			may = abs(3 * sin(glfwGetTime()));
+			may = abs(3 * sin(3*glfwGetTime()));
 			if (max < 60.0) {
-				max += 0.0003 * glfwGetTime();
+				max += 0.0005 * glfwGetTime();
 			}
 			else {
 				max = 0.0;
@@ -737,13 +699,18 @@ int main()
 
 		//Animaciï¿½n Carro
 		if (mainWindow.getr1()) {
-
-			if (mcz < 30.0) {
-				mcz += 0.0003 * glfwGetTime();
+			rotR += 0.1 * glfwGetTime();
+			if (mcz < 500.0) {
+				mcz += 0.005 * glfwGetTime();
 			}
 			else {
 				mcz = 0.0;
 			}
+		}
+
+		if (mainWindow.getjuego()) {
+
+			rotJuego += 0.001 * glfwGetTime();
 		}
 
 		//pasto la mexicana
@@ -1445,6 +1412,7 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));
 		model = glm::translate(model, glm::vec3(45.0f, -0.3f, 45.0));
+		model = glm::rotate(model, glm::radians(rotJuego), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Juego1_M.RenderModel();
 
@@ -1659,70 +1627,53 @@ int main()
 		//Carro
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
-		model = glm::translate(model, posic + glm::vec3(0.0f, 0.0f, mcz));
-		model = glm::rotate(model, glm::radians(rc), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, posic + glm::vec3(mcz, 0.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(-180.0f + mcz, 0.5f, -177.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotR), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		RF_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(-187.0f + mcz, 0.5f, -177.5f));
+		model = glm::rotate(model, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotR), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		RF_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(-180.0f + mcz, 0.5f, -182.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotR), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		RF_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
+		model = glm::translate(model, glm::vec3(-187.0f + mcz, 0.5f, -182.5f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(rotR), glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		RF_M.RenderModel();
 
 
 		//---------- Universo de Club Penguin O> ----------//
 
 		//pizzeria
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 250.0f));
 		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pizzeria.RenderModel();
-		
-		//pizza
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-335.0f, 10.0f, 367.0f));
-		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
-		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		pizza.RenderModel();
-
-		//mesa
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-335.0f, 2.0f, 367.0f));
-		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		tableCP.RenderModel();
-
-		//butacas
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-324.0f, 2.0f, 367.0f));
-		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
-		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		seat.RenderModel();
-
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-346.0f, 2.0f, 367.0f));
-		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		seat.RenderModel();
-
-		//horno
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-376.0f, 2.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(11.0f, 11.0f, 11.0f));
-		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		oven.RenderModel();
-		ovenD.RenderModel();
-		ovenG.RenderModel();
-
-		//barra
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-365.0f, 2.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(12.0f, 13.0f, 12.0f));
-		model = glm::rotate(model, glm::radians(270.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		bar.RenderModel();
 
 		//snow
 		model = glm::mat4(1.0);
@@ -1763,22 +1714,22 @@ int main()
 
 		//tirolesa
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		zipB.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		zipC.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(12.0f, 12.0f, 12.0f));
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		zipC1.RenderModel();
@@ -1798,6 +1749,9 @@ int main()
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		sign.RenderModel();
+
+
+
 
 
 		//forest club penguin
@@ -1834,7 +1788,7 @@ int main()
 		tree.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-414.0f, -1.0f, 450.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 450.0f));
 		model = glm::scale(model, glm::vec3(10.0f, 20.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		tree.RenderModel();
@@ -1846,32 +1800,32 @@ int main()
 		tree.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-460.0f, -1.0f, 359.0f));
+		model = glm::translate(model, glm::vec3(-400.0f, -1.0f, 359.0f));
 		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		tree.RenderModel();
 
 		//sensei
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-350.0f, 2.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		sensei.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-350.0f, 2.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		beard.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-350.0f, 2.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		wingL.RenderModel();
 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-350.0f, 2.0f, 350.0f));
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		wingR.RenderModel();
