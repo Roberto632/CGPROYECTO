@@ -25,7 +25,7 @@
 #include"Model.h"
 #include "Skybox.h"
 
-//para iluminación
+//para iluminaciï¿½n
 #include "CommonValues.h"
 #include "DirectionalLight.h"
 #include "PointLight.h"
@@ -59,6 +59,34 @@ Texture pisoSkate;
 
 //modelos del universo de club penguin
 Model pizzeria;
+Model snow;
+
+//puffles
+Model puffleC;
+Model puffleO;
+Model puffleG;
+Model puffleR;
+
+//tirolesa
+Model zipB;
+Model zipC;
+Model zipC1;
+
+//arbol
+Model tree;
+
+//sensei
+Model sensei;
+Model beard;
+Model wingL;
+Model wingR;
+
+//lamp
+Model lamp;
+
+//sign
+Model sign;
+
 
 //modelos del universo del gumball y elementos complementarios
 Model Kitt_M;
@@ -144,7 +172,7 @@ static const char* vShader = "shaders/shader_light.vert";
 static const char* fShader = "shaders/shader_light.frag";
 
 
-//función de calculo de normales por promedio de vértices 
+//funciï¿½n de calculo de normales por promedio de vï¿½rtices 
 void calcAverageNormals(unsigned int* indices, unsigned int indiceCount, GLfloat* vertices, unsigned int verticeCount,
 	unsigned int vLength, unsigned int normalOffset)
 {
@@ -263,15 +291,15 @@ int main()
 
 	CreateObjects();
 	CreateShaders();
-	/*Cámara se usa el comando: glm::lookAt(vector de posición, vector de orientación, vector up));
+	/*Cï¿½mara se usa el comando: glm::lookAt(vector de posiciï¿½n, vector de orientaciï¿½n, vector up));
 	En la clase Camera se reciben 5 datos:
-	glm::vec3 vector de posición,
+	glm::vec3 vector de posiciï¿½n,
 	glm::vec3 vector up,
-	GlFloat yaw rotación para girar hacia la derecha e izquierda
-	GlFloat pitch rotación para inclinar hacia arriba y abajo
+	GlFloat yaw rotaciï¿½n para girar hacia la derecha e izquierda
+	GlFloat pitch rotaciï¿½n para inclinar hacia arriba y abajo
 	GlFloat velocidad de desplazamiento,
 	GlFloat velocidad de vuelta o de giro
-	Se usa el Mouse y las teclas WASD y su posición inicial está en 0,0,1 y ve hacia 0,0,-1.
+	Se usa el Mouse y las teclas WASD y su posiciï¿½n inicial estï¿½ en 0,0,1 y ve hacia 0,0,-1.
 	*/
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 0.9f, 0.5f);//0.9->0.3 velocidad de desplazamienot
 
@@ -294,7 +322,7 @@ int main()
 	mosaicoSuelo.LoadTextureA();
 	asfalto = Texture("Textures/asfalto.tga");
 	asfalto.LoadTextureA();
-	mosaico = Texture("Textures/pisoBaño.tga");
+	mosaico = Texture("Textures/pisoBaï¿½o.tga");
 	mosaico.LoadTextureA();
 	pisoSkate = Texture("Textures/pisoSkate.tga");
 	pisoSkate.LoadTextureA();
@@ -303,6 +331,51 @@ int main()
 	//club penguin
 	pizzeria = Model();
 	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
+
+	snow = Model();
+	snow.LoadModel("Models/Daniel/snow/snow.obj");
+
+	puffleC = Model();
+	puffleC.LoadModel("Models/Daniel/puffle/puffleC.obj");
+
+	puffleG = Model();
+	puffleG.LoadModel("Models/Daniel/puffle/puffleG.obj");
+
+	puffleO = Model();
+	puffleO.LoadModel("Models/Daniel/puffle/puffleO.obj");
+
+	puffleR = Model();
+	puffleR.LoadModel("Models/Daniel/puffle/puffleR.obj");
+
+	zipB = Model();
+	zipB.LoadModel("Models/Daniel/zip/zipB.obj");
+
+	zipC = Model();
+	zipC.LoadModel("Models/Daniel/zip/zipC.obj");
+
+	zipC1 = Model();
+	zipC1.LoadModel("Models/Daniel/zip/zipC1.obj");
+
+	tree = Model();
+	tree.LoadModel("Models/Daniel/tree/tree.obj");
+
+	sensei = Model();
+	sensei.LoadModel("Models/Daniel/sensei/bodyS.obj");
+
+	beard = Model();
+	beard.LoadModel("Models/Daniel/sensei/beardS.obj");
+
+	wingL = Model();
+	wingL.LoadModel("Models/Daniel/sensei/wingLS.obj");
+
+	wingR = Model();
+	wingR.LoadModel("Models/Daniel/sensei/wingRS.obj");
+
+	lamp= Model();
+	lamp.LoadModel("Models/Daniel/lamp/lampCP.obj");
+
+	sign = Model();
+	sign.LoadModel("Models/Daniel/sign/sign.obj");
 
 
 
@@ -480,13 +553,13 @@ int main()
 	Material_opaco = Material(0.3f, 4);
 
 
-	//luz direccional, sólo 1 y siempre debe de existir
+	//luz direccional, sï¿½lo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 		0.3f, 0.3f,
 		0.0f, 0.0f, -1.0f);
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
-	//Declaración de primer luz puntual
+	//Declaraciï¿½n de primer luz puntual
 	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 		0.0f, 1.0f,
 		-6.0f, 1.5f, 1.5f,
@@ -563,7 +636,7 @@ int main()
 		uniformEyePosition = shaderList[0].GetEyePositionLocation();
 		uniformColor = shaderList[0].getColorLocation();
 
-		//información en el shader de intensidad especular y brillo
+		//informaciï¿½n en el shader de intensidad especular y brillo
 		uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
 		uniformShininess = shaderList[0].GetShininessLocation();
 
@@ -571,13 +644,13 @@ int main()
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
 		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
 
-		// luz ligada a la cámara de tipo flash
-		//sirve para que en tiempo de ejecución (dentro del while) se cambien propiedades de la luz
+		// luz ligada a la cï¿½mara de tipo flash
+		//sirve para que en tiempo de ejecuciï¿½n (dentro del while) se cambien propiedades de la luz
 		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
-		//información al shader de fuentes de iluminación
+		//informaciï¿½n al shader de fuentes de iluminaciï¿½n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
@@ -590,7 +663,7 @@ int main()
 
 
 		//Animaciones Gumball
-		//Animación Araña
+		//Animaciï¿½n Araï¿½a
 		if (mainWindow.getmovArana()) {
 			may = abs(3 * sin(glfwGetTime()));
 			if (max < 60.0) {
@@ -605,7 +678,7 @@ int main()
 			max = 0.0f;
 		}
 
-		//Animación Carro
+		//Animaciï¿½n Carro
 		if (mainWindow.getr1()) {
 
 			if (mcz < 30.0) {
@@ -714,7 +787,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -726,7 +799,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -738,7 +811,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -752,7 +825,7 @@ int main()
 
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -764,7 +837,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -776,7 +849,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -789,7 +862,7 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -801,7 +874,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -813,7 +886,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -827,7 +900,7 @@ int main()
 
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -839,7 +912,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -851,7 +924,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -864,7 +937,7 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -876,7 +949,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -888,7 +961,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -901,7 +974,7 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -913,7 +986,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -925,7 +998,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -938,7 +1011,7 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 470.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -950,7 +1023,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 410.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -962,7 +1035,7 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso baño 
+		//piso baï¿½o 
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 350.0f));
 		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
@@ -974,9 +1047,9 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		
-		
-		//Árboles Gumball
+
+
+		//ï¿½rboles Gumball
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
 		model = glm::translate(model, glm::vec3(45.0f, -0.15f, 45.0));
@@ -1539,11 +1612,166 @@ int main()
 
 		//pizzeria
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, 100.0f));
-		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 250.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pizzeria.RenderModel();
+
+		//snow
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, 240.0f));
+		model = glm::scale(model, glm::vec3(27.0f, 0.0f, 20.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		snow.RenderModel();
+
+		//puffles
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 100.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleC.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 90.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleG.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 80.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleO.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, -0.5f, 70.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffleR.RenderModel();
+
+		//tirolesa
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(12.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipB.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipC.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(9.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		zipC1.RenderModel();
+
+		//outside
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, 300.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 15.0f, 15.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lamp.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sign.RenderModel();
+
+
+
+
+
+		//forest club penguin
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 20.0f));
+		model = glm::scale(model, glm::vec3(15.0f, 17.0f, 15.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-600.0f, -1.0f, 20.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 15.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-600.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 12.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		//mï¿½s ï¿½rboles
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, -1.0f, 200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, -1.0f, 450.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 20.0f, 10.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-189.0f, -1.0f, 341.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-400.0f, -1.0f, 359.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		tree.RenderModel();
+
+		//sensei
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		sensei.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		beard.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		wingL.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 320.0f));
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		wingR.RenderModel();
 
 
 
@@ -1553,7 +1781,7 @@ int main()
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-285.0f, 2.0f, -285.0f));
 		model = glm::scale(model, glm::vec3(15.0f, 20.0f, 15.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model)); 
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 		EdiDodu_M.RenderModel();
@@ -1724,7 +1952,8 @@ int main()
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-		//Agave ¿qué sucede si lo renderizan antes del coche y el helicóptero?
+
+		//Agave ï¿½quï¿½ sucede si lo renderizan antes del coche y el helicï¿½ptero?
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 1.0f, -4.0f));
 		model = glm::scale(model, glm::vec3(4.0f, 4.0f, 4.0f));

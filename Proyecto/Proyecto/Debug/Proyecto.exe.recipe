@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+
       <FullPath>C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Debug\Proyecto.exe</FullPath>
+
+      <FullPath>C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Debug\Proyecto.exe</FullPath>
+
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
