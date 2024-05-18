@@ -15,6 +15,11 @@ public:
 	GLfloat getYChange();
 	GLfloat getmuevex() { return muevex; }
 
+	//Animaciones Gumball
+	GLfloat getmovArana() { return movArana; }
+	GLfloat getr1() { return r1; }
+	GLfloat getjuego() { return juego; }
+
 	//para cambiar de dia a noche
 
 	GLfloat getCambioNoche() { return cambiaNoche; }
@@ -36,6 +41,12 @@ private:
 	GLfloat xChange;
 	GLfloat yChange;
 	GLfloat muevex;
+
+	//Animaciones Gumball
+	bool juego = false;
+	bool movArana;
+	bool r1 = false;
+
 	//variable para cambiar de dia noche 
 	GLfloat cambiaNoche; 
 	bool mouseFirstMoved;
