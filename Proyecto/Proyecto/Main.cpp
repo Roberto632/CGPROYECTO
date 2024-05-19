@@ -142,6 +142,10 @@ Model llanaDI_M;
 Model llanaTD_M;
 Model llanaTI_M;
 Model ArbolFP_M;
+Model PuenteFP_M;
+Model CarritoPF_M;
+Model LlantasPF_M;
+Model poste_M;
 //variables para le movimiento auto
 GLfloat moviemientoAutoPhineas;
 GLfloat giroAutoPhienas;
@@ -481,8 +485,23 @@ int main()
 	llanaTI_M = Model();
 	llanaTI_M.LoadModel("Models/Roberto/llanataTI.obj");
 
+
+	poste_M = Model();
+	poste_M.LoadModel("Models/Roberto/postePF.obj");
+
 	ArbolFP_M = Model();
 	ArbolFP_M.LoadModel("Models/Roberto/arbolFinal.obj");
+
+	PuenteFP_M = Model();
+	PuenteFP_M.LoadModel("Models/Roberto/aPuenteF.obj");
+
+
+	CarritoPF_M = Model();
+	CarritoPF_M.LoadModel("Models/Roberto/CajaFP.obj");
+
+	LlantasPF_M = Model();
+	LlantasPF_M.LoadModel("Models/Roberto/LlantaPF.obj");
+
 
 	//se cargan nuestras skybox
 	//dia
@@ -1842,8 +1861,9 @@ int main()
 
 		///////////////////////////////////////////Univero de phienas y ferb/////////////////////////////////////////////////////////////////////
 		
+
 		//movimeinto automovil
-		
+
 		//Auto
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(650.0f, 0.0f, -395.0f));
@@ -1877,7 +1897,37 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		llanaTI_M.RenderModel();
 
+		//CARRITO
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 1.0f, 0.0f));
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		CarritoPF_M.RenderModel();
 
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(2.5f, -0.05f, 3.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		LlantasPF_M.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.5f, -0.05f, 3.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		LlantasPF_M.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(2.5f, -0.05f, -3.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		LlantasPF_M.RenderModel();
+
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(-2.5f, -0.05f, -3.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		LlantasPF_M.RenderModel();
 
 		//edificio
 		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
@@ -2274,6 +2324,24 @@ int main()
 		model = glm::scale(model, glm::vec3(11.0f, 11.0f, 11.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
+
+		//puente
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-500.0f, -2.0f, -300.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 2.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PuenteFP_M.RenderModel();
+
+
+		//poste
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-200.0f, 31.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		poste_M.RenderModel();
+
 
 
 		/////////////////////////////////////////////////////////////////////////////////////////////////
