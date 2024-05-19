@@ -108,10 +108,7 @@ Model Spider_M;
 Model Light_M;
 Model Car_M;
 Model RF_M;
-//Model R1_M;
-//Model R2_M;
-//Model R3_M;
-//Model R4_M;
+Model SkateG_M;
 
 //Variables Gumball
 GLfloat may = 0.0f;
@@ -392,6 +389,8 @@ int main()
 	Llanta_M.LoadModel("Models/llanta_optimizada.obj");
 	Blackhawk_M = Model();
 	Blackhawk_M.LoadModel("Models/uh60.obj");
+
+	//Modelos Gumball
 	Arbol_M = Model();
 	Arbol_M.LoadModel("Models/Alberto/arbol.obj");
 	Arbusto_M = Model();
@@ -433,52 +432,8 @@ int main()
 	RF_M = Model();
 	RF_M.LoadModel("Models/Alberto/rf.obj");
 
-	/*R2_M = Model();
-	R2_M.LoadModel("Models/Alberto/r2.obj");
-
-	R3_M = Model();
-	R3_M.LoadModel("Models/Alberto/r3.obj");
-
-	R4_M = Model();
-	R4_M.LoadModel("Models/Alberto/r4.obj");*/
-
-	Arbol_M = Model();
-	Arbol_M.LoadModel("Models/Alberto/arbol.obj");
-	Arbusto_M = Model();
-	Arbusto_M.LoadModel("Models/Alberto/arbusto.obj");
-	Juego1_M = Model();
-	Juego1_M.LoadModel("Models/Alberto/Juego1.obj");
-	Juego2_M = Model();
-	Juego2_M.LoadModel("Models/Alberto/Juego2.obj");
-	Juego31_M = Model();
-	Juego31_M.LoadModel("Models/Alberto/Juego31.obj");
-	Juego32_M = Model();
-	Juego32_M.LoadModel("Models/Alberto/Juego32.obj");
-	Juego33_M = Model();
-	Juego33_M.LoadModel("Models/Alberto/Juego33.obj");
-	Juego34_M = Model();
-	Juego34_M.LoadModel("Models/Alberto/Juego34.obj");
-
-	Puestos_M = Model();
-	Puestos_M.LoadModel("Models/Alberto/puestos.obj");
-
-	Darwin_M = Model();
-	Darwin_M.LoadModel("Models/Alberto/darwin.obj");
-
-	Flor_M = Model();
-	Flor_M.LoadModel("Models/Alberto/flor.obj");
-
-	Leslie_M = Model();
-	Leslie_M.LoadModel("Models/Alberto/leslie.obj");
-
-	Spider_M = Model();
-	Spider_M.LoadModel("Models/Alberto/spider.obj");
-
-	Light_M = Model();
-	Light_M.LoadModel("Models/Alberto/light.obj");
-
-	Car_M = Model();
-	Car_M.LoadModel("Models/Alberto/car.obj");
+	SkateG_M = Model();
+	SkateG_M.LoadModel("Models/Alberto/SkateP.obj");
 
 	//modelos del univero de phineas y ferb 
 	Inator_M = Model();
@@ -1679,6 +1634,12 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		RF_M.RenderModel();
 
+		//Skatepart
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::translate(model, glm::vec3(25, 0.5f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		SkateG_M.RenderModel();
 
 		//---------- Universo de Club Penguin O> ----------//
 

@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Window.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Window.cpp",
               "DocumentMoniker": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.cpp",
               "RelativeDocumentMoniker": "Proyecto\\Window.cpp",
@@ -38,19 +38,21 @@
               "RelativeToolTip": "Proyecto\\Window.cpp",
               "ViewState": "AQIAAGkAAAAAAAAAAAAAAH0AAAACAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-05-16T03:30:16.843Z"
+              "WhenOpened": "2024-05-16T03:30:16.843Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Window.h",
               "DocumentMoniker": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.h",
               "RelativeDocumentMoniker": "Proyecto\\Window.h",
               "ToolTip": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.h",
               "RelativeToolTip": "Proyecto\\Window.h",
-              "ViewState": "AQIAABsAAAAAAAAAAAAAACgAAAARAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAACgAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-05-16T03:29:23.565Z"
+              "WhenOpened": "2024-05-16T03:29:23.565Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -60,7 +62,7 @@
               "RelativeDocumentMoniker": "Proyecto\\Main.cpp",
               "ToolTip": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Main.cpp",
               "RelativeToolTip": "Proyecto\\Main.cpp",
-              "ViewState": "AQIAAFMGAAAAAAAAAAAAAFsGAAAZAAAA",
+              "ViewState": "AQIAAFEGAAAAAAAAAAAuwGcGAAA1AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-03T00:39:22.2Z",
               "EditorCaption": ""
