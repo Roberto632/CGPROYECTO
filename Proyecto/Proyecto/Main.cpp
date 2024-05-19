@@ -588,6 +588,14 @@ int main()
 		15.0f);
 	spotLightCount++;
 
+	spotLights[2] = SpotLight(1.0f, 1.0f, 1.0f,  //Color
+		1.0f, 2.0f,
+		135.0f, 40.0f, 258.0, //Posición
+		0.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,  //limite
+		30.0f); //Angulo
+	spotLightCount++;
+
 	//se crean mas luces puntuales y spotlight 
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,

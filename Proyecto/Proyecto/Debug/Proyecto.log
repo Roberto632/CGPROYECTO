@@ -5,11 +5,11 @@ C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Window.h(12,36): wa
 C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(579,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(581,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(640,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(642,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(655,16): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(657,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(666,22): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(593,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(595,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(654,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(656,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(669,16): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(671,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Proyecto\Main.cpp(680,22): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   Proyecto.vcxproj -> C:\Users\52558\Documents\GitHub\CGPROYECTO\Proyecto\Debug\Proyecto.exe
