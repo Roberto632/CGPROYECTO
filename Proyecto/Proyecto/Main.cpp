@@ -635,16 +635,16 @@ int main()
 
 		//PARA DAR LA ILUCION DE TIEMPO DIA A NOCHE
 		// por el momento solo esta a 5 segundos para comprobar que funcione de manmera adecuada 
-		if (periodoUso <= 5.0) {
+		if (periodoUso <= 75.0) {
 			skyboxDia.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
-		else if (periodoUso <= 10.0) {
+		else if (periodoUso <= 150.0) {
 			skyboxTarde.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
-		else if (periodoUso <= 15.0) {
+		else if (periodoUso <= 225.0) {
 			skyboxNoche.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
-		else if (periodoUso <= 20.0) {
+		else if (periodoUso <= 300.0) {
 			skyboxAmanecer.DrawSkybox(camera.calculateViewMatrix(), projection);
 		}
 
@@ -673,12 +673,6 @@ int main()
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
-
-
-
-		glm::mat4 model(1.0);
-		glm::mat4 modelaux(1.0);
-		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
 
 		//Animaciones Gumball
@@ -712,6 +706,12 @@ int main()
 
 			rotJuego += 0.001 * glfwGetTime();
 		}
+
+
+
+		glm::mat4 model(1.0);
+		glm::mat4 modelaux(1.0);
+		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 
 		//pasto la mexicana
 		model = glm::mat4(1.0);
@@ -788,8 +788,214 @@ int main()
 
 		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -140.0f));
-		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 1.0f, 7.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(401.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.3f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(403.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(405.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.9f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(407.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(409.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(411.0f, 0.0f, -110.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 5.7f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 1.0f, 9.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-401.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 8.8f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-403.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 8.6f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-405.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 8.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-407.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 8.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+
+		////////////////////////////////
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-409.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 8.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-411.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.8f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-413.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.6f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-415.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-417.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 7.2f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+
+		pisoSkate.UseTexture();
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+		meshList[2]->RenderMesh();
+
+		//piso skatepark 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-419.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.8f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
@@ -801,8 +1007,8 @@ int main()
 
 		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -20.0f));
-		model = glm::scale(model, glm::vec3(25.0f, 1.0f, 1.0f));
+		model = glm::translate(model, glm::vec3(-421.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.6f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
@@ -811,258 +1017,71 @@ int main()
 
 		meshList[2]->RenderMesh();
 
-		//piso ba�o 
+
+		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-423.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 6.2f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		mosaico.UseTexture();
+		pisoSkate.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-		//piso ba�o 
+		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-425.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 5.8f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		mosaico.UseTexture();
+		pisoSkate.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-		//piso ba�o 
+		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(670.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-427.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 5.2f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		mosaico.UseTexture();
+		pisoSkate.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-
-
-		//piso ba�o 
+		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-429.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 4.6f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		mosaico.UseTexture();
+		pisoSkate.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-		//piso ba�o 
+		//piso skatepark 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(-431.0f, 0.0f, -95.0f));
+		model = glm::scale(model, glm::vec3(0.1f, 1.0f, 4.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
-		mosaico.UseTexture();
+		pisoSkate.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
 
-		//piso ba�o 
+		//piso baño 
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(610.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(550.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(490.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(430.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(370.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 470.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 410.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-
-		mosaico.UseTexture();
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
-		meshList[2]->RenderMesh();
-
-		//piso ba�o 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(310.0f, 0.0f, 350.0f));
-		model = glm::scale(model, glm::vec3(3.0f, 1.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(500.0f, 0.0f, 400.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 1.0f, 10.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
 
@@ -2027,7 +2046,7 @@ int main()
 
 		//pero necesitammos realizar un reset al periodo de uso para poder realizar un cambio entre
 		//dia, tarde, noche, amanecer
-		if (periodoUso <= 20.0) {
+		if (periodoUso <= 300.0) {
 			fin = clock();
 			periodoUso = ((double)(fin - inicio)) / CLOCKS_PER_SEC;
 			//para vererificar que si se realiza el reset de manera adecuada
