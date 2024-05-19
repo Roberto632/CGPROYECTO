@@ -329,7 +329,7 @@ int main()
 	mosaicoSuelo.LoadTextureA();
 	asfalto = Texture("Textures/asfalto.tga");
 	asfalto.LoadTextureA();
-	mosaico = Texture("Textures/pisoBa�o.tga");
+	mosaico = Texture("Textures/pisoBanio.tga");
 	mosaico.LoadTextureA();
 	pisoSkate = Texture("Textures/pisoSkate.tga");
 	pisoSkate.LoadTextureA();
@@ -392,8 +392,6 @@ int main()
 	Llanta_M.LoadModel("Models/llanta_optimizada.obj");
 	Blackhawk_M = Model();
 	Blackhawk_M.LoadModel("Models/uh60.obj");
-//<<<<<<< HEAD
-
 	Arbol_M = Model();
 	Arbol_M.LoadModel("Models/Alberto/arbol.obj");
 	Arbusto_M = Model();
@@ -443,8 +441,6 @@ int main()
 
 	R4_M = Model();
 	R4_M.LoadModel("Models/Alberto/r4.obj");*/
-//=======
-//>>>>>>> 96256336d13de02933bd449444bf4c16d1a55335
 
 	Arbol_M = Model();
 	Arbol_M.LoadModel("Models/Alberto/arbol.obj");
