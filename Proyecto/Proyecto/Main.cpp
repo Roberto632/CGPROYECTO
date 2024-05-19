@@ -109,6 +109,8 @@ Model Light_M;
 Model Car_M;
 Model RF_M;
 Model SkateG_M;
+Model Vidrios_M;
+Model Vidrios2_M;
 
 //Variables Gumball
 GLfloat may = 0.0f;
@@ -434,6 +436,12 @@ int main()
 
 	SkateG_M = Model();
 	SkateG_M.LoadModel("Models/Alberto/SkateP.obj");
+
+	Vidrios_M = Model();
+	Vidrios_M.LoadModel("Models/Alberto/Cristales.obj");
+
+	Vidrios2_M = Model();
+	Vidrios2_M.LoadModel("Models/Alberto/Cristales2.obj");
 
 	//modelos del univero de phineas y ferb 
 	Inator_M = Model();
@@ -1423,6 +1431,26 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Puestos_M.RenderModel();
 
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-30.0f, -2.5f, -45.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		Vidrios_M.RenderModel();
+		glDisable(GL_BLEND);
+
+		/*model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-30.0f, -2.5f, -45.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		Vidrios2_M.RenderModel();
+		glDisable(GL_BLEND);*/
+
 
 		//Flores
 		model = glm::mat4(1.0);
@@ -1637,7 +1665,7 @@ int main()
 		//Skatepart
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		model = glm::translate(model, glm::vec3(25, 0.5f, 0.0f));
+		model = glm::translate(model, glm::vec3(25, -0.1f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		SkateG_M.RenderModel();
 
