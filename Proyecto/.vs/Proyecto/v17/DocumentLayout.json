@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\SpotLight.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\SpotLight.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{E8CEA218-90AD-4E77-8810-5C7B4EB38938}|Proyecto\\Proyecto.vcxproj|solutionrelative:Proyecto\\Window.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,6 +35,18 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SpotLight.cpp",
+              "DocumentMoniker": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\SpotLight.cpp",
+              "RelativeDocumentMoniker": "Proyecto\\SpotLight.cpp",
+              "ToolTip": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\SpotLight.cpp",
+              "RelativeToolTip": "Proyecto\\SpotLight.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-05-19T23:28:48.58Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Window.cpp",
               "DocumentMoniker": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.cpp",
               "RelativeDocumentMoniker": "Proyecto\\Window.cpp",
@@ -42,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Window.h",
               "DocumentMoniker": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Window.h",
               "RelativeDocumentMoniker": "Proyecto\\Window.h",
@@ -60,7 +76,7 @@
               "RelativeDocumentMoniker": "Proyecto\\Main.cpp",
               "ToolTip": "C:\\Users\\52558\\Documents\\GitHub\\CGPROYECTO\\Proyecto\\Proyecto\\Main.cpp",
               "RelativeToolTip": "Proyecto\\Main.cpp",
-              "ViewState": "AQIAAC4CAAAAAAAAAAAIwD0CAAALAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMgGAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-05-03T00:39:22.2Z",
               "EditorCaption": ""

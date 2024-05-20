@@ -639,12 +639,12 @@ int main()
 	spotLightCount++;
 
 	//luz fija
-	spotLights[1] = SpotLight(0.0f, 1.0f, 0.0f,
+	spotLights[1] = SpotLight(1.0f, 1.0f, 0.0f,
 		1.0f, 2.0f,
-		5.0f, 10.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
+		-50.0f, 10.5f, -200.0f,
+		5.0f, -5.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,
-		15.0f);
+		30.0f);
 	spotLightCount++;
 
 	spotLights[2] = SpotLight(1.0f, 1.0f, 1.0f,  //Color
@@ -653,6 +653,14 @@ int main()
 		0.0f, -5.0f, 0.0f,
 		1.0f, 0.0f, 0.0f,  //limite
 		30.0f); //Angulo
+	spotLightCount++;
+
+	spotLights[3] = SpotLight(1.0f, 1.0f, 0.0f,
+		1.0f, 2.0f,
+		-50.0f, 10.5f, -200.0f,
+		5.0f, -5.0f, 0.0f,
+		1.0f, 0.0f, 0.0f,
+		30.0f);
 	spotLightCount++;
 
 	//se crean mas luces puntuales y spotlight 
@@ -747,9 +755,11 @@ int main()
 			rotR += 0.1 * glfwGetTime();
 			if (mcz < 500.0) {
 				mcz += 0.005 * glfwGetTime();
+				mcx += 0.0075 * glfwGetTime();
 			}
 			else {
 				mcz = 0.0;
+				mcx = 0.0;
 			}
 		}
 
@@ -1719,6 +1729,8 @@ int main()
 		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
 		model = glm::translate(model, posic + glm::vec3(mcz, 0.0f, 0.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		spotLights[1].SetPos(glm::vec3(-260.0 + mcx, 4.0f, -357.0f));
+		spotLights[3].SetPos(glm::vec3(-260.0 + mcx, 4.0f, -363.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Car_M.RenderModel();
 
