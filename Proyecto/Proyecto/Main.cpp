@@ -103,12 +103,16 @@ Model sensei;
 Model beard;
 Model wingL;
 Model wingR;
-
-//lamp
 Model lamp;
-
-//sign
 Model sign;
+Model benchP;
+Model jetpack;
+Model jukebox;
+Model skateparkC;
+Model bush;
+Model puffito;
+
+
 
 
 //modelos del universo del gumball y elementos complementarios
@@ -452,6 +456,25 @@ int main()
 	//letrero
 	sign = Model();
 	sign.LoadModel("Models/Daniel/sign/sign.obj");
+
+	benchP = Model();
+	benchP.LoadModel("Models/Daniel/parkBench/parkBench.obj");
+
+	jetpack = Model();
+	jetpack.LoadModel("Models/Daniel/jetpack/jetpack.obj");
+
+	jukebox = Model();
+	jukebox.LoadModel("Models/Daniel/jukebox/jukebox.obj");
+
+	skateparkC = Model();
+	skateparkC.LoadModel("Models/Daniel/skatepark/skatepark.obj");
+
+	bush = Model();
+	bush.LoadModel("Models/Daniel/bush/bush.obj");
+
+	puffito = Model();
+	puffito.LoadModel("Models/Daniel/bush/puffito.obj");
+
 
 	//----- end club penguin univrse -----
 
@@ -1918,6 +1941,56 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		sign.RenderModel();
 
+		//bancas
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-300.0f, 0.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		benchP.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		benchP.RenderModel();
+		//end bancas
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-120.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		jetpack.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, 90.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		jukebox.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(100.0f, 0.0f, 100.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		skateparkC.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-10.0f, 0.0f, 75.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		bush.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-10.0f, 0.0f, 75.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		puffito.RenderModel();
 
 		//forest club penguin
 		model = glm::mat4(1.0);
