@@ -35,6 +35,12 @@
 //para obtener el tiempo del sistema.
 #include "time.h"
 
+//Para archivos de audio
+#include<iostream>
+#include "../Externals/includes/irrKlang.h"
+
+using namespace irrklang;
+
 const float toRadians = 3.14159265f / 180.0f;
 
 Window mainWindow;
@@ -671,11 +677,16 @@ int main()
 	glm::mat4 projection = glm::perspective(45.0f, (GLfloat)mainWindow.getBufferWidth() / mainWindow.getBufferHeight(), 0.1f, 1000.0f);
 	////Loop mientras no se cierra la ventana
 
+	//Audio
+	ISoundEngine* engine = createIrrKlangDevice();
+
 
 	//obtener el tiempo de incio
 	inicio = clock();
 	while (!mainWindow.getShouldClose())
 	{
+		engine->play2D("media/TheHappySong.mp3", true);
+
 		GLfloat now = glfwGetTime();
 		deltaTime = now - lastTime;
 		deltaTime += (now - lastTime) / limitFPS;
