@@ -186,6 +186,12 @@ Model poste_M;
 //variables para le movimiento auto
 GLfloat moviemientoAutoPhineas;
 GLfloat giroAutoPhienas;
+
+GLfloat movimientoCajaMadera = 0.0f;
+GLfloat movimientoCajaMaderaOffset = 0.3f;
+GLfloat rotarLlantasCajaMadera = 0.0f;
+GLfloat rotarLlantasCajaMaderaOffset = 5.0f;
+bool avanzaCajaMadera = true;
 //>>>>>>> 96256336d13de02933bd449444bf4c16d1a55335
 
 
@@ -214,6 +220,14 @@ DirectionalLight mainLight;
 //para declarar varias luces de tipo pointlight
 PointLight pointLights[MAX_POINT_LIGHTS];
 SpotLight spotLights[MAX_SPOT_LIGHTS];
+
+//para las luciernagas
+PointLight pointLightsLuciernagas[MAX_POINT_LIGHTS];
+PointLight pointLightsLuciernagas1[MAX_POINT_LIGHTS];
+PointLight pointLightsLuciernagas2[MAX_POINT_LIGHTS];
+PointLight pointLightsLuciernagas3[MAX_POINT_LIGHTS];
+PointLight pointLightsLuciernagas4[MAX_POINT_LIGHTS];
+PointLight pointLightsLuciernagas5[MAX_POINT_LIGHTS];
 
 // Vertex Shader
 static const char* vShader = "shaders/shader_light.vert";
@@ -704,6 +718,57 @@ int main()
 	spotLightCount++;
 
 	//se crean mas luces puntuales y spotlight 
+
+
+	//contador de luces puntuales
+	unsigned int pointLightCountLuciernagas = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas++;
+
+
+	unsigned int pointLightCountLuciernagas1 = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas1[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas1++;
+
+	unsigned int pointLightCountLuciernagas2 = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas2[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas2++;
+
+	unsigned int pointLightCountLuciernagas3 = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas3[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas3++;
+
+	unsigned int pointLightCountLuciernagas4 = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas4[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas4++;
+
+	unsigned int pointLightCountLuciernagas5 = 0;
+	//Declaración de primer luz puntual
+	pointLightsLuciernagas5[0] = PointLight(1.0f, 1.0f, 1.0f,
+		0.9f, 0.9f,//0.0f, 1.0f
+		0.0f, 0.0f, 0.0f,
+		0.3f, 0.2f, 0.1f);
+	pointLightCountLuciernagas5++;
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0;
@@ -1242,7 +1307,6 @@ int main()
 		meshList[2]->RenderMesh();
 
 
-		/*
 		//�rboles Gumball
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(6.0f, 7.0f, 6.0f));
@@ -1633,7 +1697,7 @@ int main()
 		Vidrios_M.RenderModel();
 		glDisable(GL_BLEND);
 
-		/*model = glm::mat4(1.0);
+		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(-30.0f, -2.5f, -45.0f));
@@ -1813,7 +1877,7 @@ int main()
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Spider_M.RenderModel();
-		*/
+		
 		//Carro
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.5f, 2.0f, 2.0f));
@@ -2195,10 +2259,9 @@ int main()
 		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		wingR.RenderModel();
-		/*
+		
 		///////////////////////////////////////////Univero de phienas y ferb/////////////////////////////////////////////////////////////////////
 		
-
 		//movimeinto automovil
 
 		//Auto
@@ -2234,37 +2297,162 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		llanaTI_M.RenderModel();
 
-		//CARRITO
+		//////////////////////////////////////////////////////////////////////////////
+
+		/*
+		*
+		*
+
+		movCoche = 0.0f;
+	movOffset = 0.3f; //estaba en 0.03 se cambia a 0.3
+	rotllanta = 0.0f;
+	rotllantaOffset = 5.0f;
+	//elic
+	//
+	movEli = 0.3f;
+	movEliOffset = 10.0f;
+	bool eli = true;
+	////Loop mientras no se cierra la ventana
+	avanza = true;
+
+		if (avanza) {
+			if (movCoche >= -300.0f)//dimensiones nuestro suelo
+			{
+				movCoche -= movOffset * deltaTime;
+				//printf("avanza%f \n ",movCoche);
+				rotllanta += rotllantaOffset * deltaTime;//para que no giren las llantas
+			}
+			else {
+				avanza = !avanza;
+			}
+		}
+		else {
+			if (movCoche < 290) {
+
+				movCoche += movOffset * deltaTime;
+				//printf("avanza%f \n ",movCoche);
+				rotllanta -= rotllantaOffset * deltaTime;//para que no giren las llantas
+			}
+			else {
+				avanza = !avanza;
+			}
+		}
+
+		//Instancia del coche
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(movCoche, 0.5f, -3.0f));
 		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Kitt_M.RenderModel();
+
+		//Llanta delantera izquierda
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 8.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		color = glm::vec3(0.5f, 0.5f, 0.5f);//llanta con color gris
+		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Llanta_M.RenderModel();
+
+		//Llanta trasera izquierda
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 8.0f));
+		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Llanta_M.RenderModel();
+
+		//Llanta delantera derecha
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 1.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Llanta_M.RenderModel();
+
+		//Llanta trasera derecha
+		model = modelaux;
+		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 1.5f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, -rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Llanta_M.RenderModel();
+
+		////Loop mientras no se cierra la ventana
+GLfloat movimientoCajaMadera = 0.0f;
+GLfloat movimientoCajaMaderaOffset = 0.3f;
+GLfloat rotarLlantasCajaMadera = 0.0f;
+GLfloat rotarLlantasCajaMaderaOffset = 5.0f;
+bool avanzaCajaMadera = true;
+
+		*/
+
+
+
+		if (avanzaCajaMadera) {
+			if (movimientoCajaMadera >= -433.0f) {
+				movimientoCajaMadera -= movimientoCajaMaderaOffset * deltaTime;
+				rotarLlantasCajaMadera -= rotarLlantasCajaMaderaOffset * deltaTime;
+			}
+			else {
+				avanzaCajaMadera = !avanzaCajaMadera;
+			}
+		}
+		else {
+			if (movimientoCajaMadera < -230) {
+
+				movimientoCajaMadera += movimientoCajaMaderaOffset * deltaTime;
+				rotarLlantasCajaMadera += rotarLlantasCajaMaderaOffset * deltaTime;//para que no giren las llantas
+			}
+			else {
+				avanzaCajaMadera = !avanzaCajaMadera;
+			}
+		}
+
+		//CARRITO DE MADERA 
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-499.7f, 96.0f, movimientoCajaMadera));//-433   230
+		modelaux = model;
+		model = glm::scale(model, glm::vec3(0.12f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		CarritoPF_M.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(2.5f, -0.05f, 3.0f));
+		model = glm::translate(model, glm::vec3(2.7f, -0.05f, 3.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		LlantasPF_M.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(-2.5f, -0.05f, 3.0f));
+		model = glm::translate(model, glm::vec3(-2.7f, -0.05f, 3.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		LlantasPF_M.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(2.5f, -0.05f, -3.0f));
+		model = glm::translate(model, glm::vec3(2.7f, -0.05f, -3.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		LlantasPF_M.RenderModel();
 
 		model = modelaux;
-		model = glm::translate(model, glm::vec3(-2.5f, -0.05f, -3.0f));
+		model = glm::translate(model, glm::vec3(-2.7f, -0.05f, -3.0f));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		LlantasPF_M.RenderModel();
+
+		//////////////////////////////////////////////////////////////////////////////
 
 		//edificio
 		//YA TIENE LA CAPACIDAD D MOSTRAR LA TRANSPARENCIA DE LOS CRISTALES 
@@ -2522,6 +2710,16 @@ int main()
 		model = glm::scale(model, glm::vec3(11.0f, 11.0f, 11.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
+		//Para apagar el pollo
+		if (periodoUso <= 225  && periodoUso <= 235) {
+			pointLightsLuciernagas[0].positionPoint(glm::vec3(460.0f, 20.0f, -200.0f));
+			shaderList[0].SetPointLights(pointLightsLuciernagas, pointLightCountLuciernagas);
+		}
+		else {
+			pointLightsLuciernagas[0].positionPoint(glm::vec3(460.0f, 20.0f, -200.0f));
+			shaderList[0].SetPointLights(pointLightsLuciernagas, pointLightCountLuciernagas - 1);
+		}
+
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -2530,6 +2728,8 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
 
+		pointLightsLuciernagas[1].positionPoint(glm::vec3(490.0f, 20.0f, -200.0f));
+
 		//bambu
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(520.0f, 0.0f, -200.0f));
@@ -2537,12 +2737,16 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
 
+		pointLightsLuciernagas[2].positionPoint(glm::vec3(520.0f, 20.0f, -200.0f));
+
 		//bambu
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(550.0f, 0.0f, -200.0f));
 		model = glm::scale(model, glm::vec3(11.0f, 11.0f, 11.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
+
+		pointLightsLuciernagas[3].positionPoint(glm::vec3(550.0f, 20.0f, -200.0f));
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -2670,17 +2874,17 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		PuenteFP_M.RenderModel();
 
-
+		////////////////////////////////////////////////////////////////////////////////////////
 		//poste
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-200.0f, 31.0f, -200.0f));
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
-		//model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		poste_M.RenderModel();
+		//////////////////////////////////////////////////////////////////////////////////////
 
-		*/
-
+		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		
 		//Agave �qu� sucede si lo renderizan antes del coche y el helic�ptero?
