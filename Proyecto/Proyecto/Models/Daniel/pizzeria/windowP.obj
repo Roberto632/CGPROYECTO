@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib wondowP.mtl
+mtllib windowP.mtl
 g default
 v -0.625000 0.000000 0.007500
 v 0.625000 0.000000 0.007500
