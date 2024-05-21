@@ -1,6 +1,6 @@
 # This file uses centimeters as units for non-parametric coordinates.
 
-mtllib parkBench.mtl
+mtllib benchP.mtl
 g default
 v 0.650000 0.039021 0.393820
 v 0.650000 0.036180 0.388244
