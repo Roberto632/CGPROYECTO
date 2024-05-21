@@ -15,6 +15,13 @@ public:
 	GLfloat getYChange();
 	GLfloat getmuevex() { return muevex; }
 
+	//animacion tirolesa
+	GLfloat movTP() { return movZ; }
+	GLfloat movTB() { return movZ1; }
+
+	//animacion jetpack
+	GLfloat animJP() { return movJP; }
+
 	//Animaciones Gumball
 	GLfloat getmovArana() { return movArana; }
 	GLfloat getr1() { return r1; }
@@ -41,6 +48,11 @@ private:
 	GLfloat xChange;
 	GLfloat yChange;
 	GLfloat muevex;
+
+	bool movZ = false;
+	bool movZ1 = false;
+
+	bool movJP = false;
 
 	//Animaciones Gumball
 	bool juego = false;
