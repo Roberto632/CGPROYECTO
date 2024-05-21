@@ -119,12 +119,12 @@ Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd trashcan.png
 Ni 1.00
-newmtl lambert17SG
+newmtl lambert19SG
 illum 4
 Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
-map_Kd vidrios.png
+map_Kd cristales.png
 Ni 1.00
 newmtl pasted__lambert10SG
 illum 4
@@ -160,6 +160,13 @@ Kd 0.00 0.00 0.00
 Ka 0.00 0.00 0.00
 Tf 1.00 1.00 1.00
 map_Kd trashcan.png
+Ni 1.00
+newmtl pasted__lambert19SG
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd cristales.png
 Ni 1.00
 newmtl pasted__pasted__lambert3SG2
 illum 4
