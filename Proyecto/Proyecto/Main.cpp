@@ -67,7 +67,6 @@ Texture pisoSkate;
 //pizzeria
 Model pizzeria;
 Model doorP;
-Model windowDP;
 Model windowP;
 
 //objetos de club penguin
@@ -386,13 +385,10 @@ int main()
 	pizzeria.LoadModel("Models/Daniel/pizzeria/pizzaParlor.obj");
 
 	doorP = Model();
-	doorP.LoadModel("Models/Daniel/pizzeria/door.obj");
-
-	windowDP = Model();
-	windowDP.LoadModel("Models/Daniel/pizzeria/windowD.obj");
+	doorP.LoadModel("Models/Daniel/pizzeria/doorP.obj");
 
 	windowP = Model();
-	windowP.LoadModel("Models/Daniel/pizzeria/window.obj");
+	windowP.LoadModel("Models/Daniel/pizzeria/windowP.obj");
 
 	//objetos
 	pizza = Model();
@@ -469,10 +465,13 @@ int main()
 	sign.LoadModel("Models/Daniel/sign/sign.obj");
 
 	benchP = Model();
-	benchP.LoadModel("Models/Daniel/parkBench/parkBench.obj");
+	benchP.LoadModel("Models/Daniel/parkBench/benchP.obj");
 
 	jetpack = Model();
 	jetpack.LoadModel("Models/Daniel/jetpack/jetpack.obj");
+
+	smoke = Model();
+	smoke.LoadModel("Models/Daniel/oven/smoke.obj");
 
 	jukebox = Model();
 	jukebox.LoadModel("Models/Daniel/jukebox/jukebox.obj");
@@ -1874,9 +1873,86 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		pizzeria.RenderModel();
 
+		//ventana1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-325.5f, 7.0f, 322.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		windowP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//ventana2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-374.5f, 7.0f, 322.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		windowP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//ventana3
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-374.5f, 7.0f, 378.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		windowP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//ventana4
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-350.0f, 7.0f, 378.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		windowP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//ventana5
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-325.5f, 7.1f, 378.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		windowP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//puerta1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-362.0f, 1.75f, 323.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		//model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		doorP.RenderModel();
+		glDisable(GL_BLEND);
+
+		//puerta2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-338.0f, 1.75f, 323.0f));
+		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		doorP.RenderModel();
+		glDisable(GL_BLEND);
+
 		//pizza
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-335.0f, 11.0f, 367.0f));
+		model = glm::translate(model, glm::vec3(-335.0f, 10.5f, 367.0f));
 		model = glm::scale(model, glm::vec3(7.0f, 7.0f, 7.0f));
 		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
