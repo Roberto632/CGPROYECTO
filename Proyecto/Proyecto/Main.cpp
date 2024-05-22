@@ -191,6 +191,8 @@ Model PuenteFP_M;
 Model CarritoPF_M;
 Model LlantasPF_M;
 Model poste_M;
+Model lampara_M;
+Model perry_M;
 //variables para le movimiento auto
 GLfloat moviemientoAutoPhineas;
 GLfloat giroAutoPhienas;
@@ -616,6 +618,12 @@ int main()
 
 	LlantasPF_M = Model();
 	LlantasPF_M.LoadModel("Models/Roberto/LlantaPF.obj");
+
+	lampara_M = Model();
+	lampara_M.LoadModel("Models/Roberto/lamparaTextura.obj");
+
+	perry_M = Model();
+	perry_M.LoadModel("Models/Roberto/PERRYFINAL.obj");
 
 
 	//se cargan nuestras skybox
@@ -2458,102 +2466,8 @@ int main()
 
 		//////////////////////////////////////////////////////////////////////////////
 
-		/*
-		*
-		*
 
-		movCoche = 0.0f;
-	movOffset = 0.3f; //estaba en 0.03 se cambia a 0.3
-	rotllanta = 0.0f;
-	rotllantaOffset = 5.0f;
-	//elic
-	//
-	movEli = 0.3f;
-	movEliOffset = 10.0f;
-	bool eli = true;
-	////Loop mientras no se cierra la ventana
-	avanza = true;
-
-		if (avanza) {
-			if (movCoche >= -300.0f)//dimensiones nuestro suelo
-			{
-				movCoche -= movOffset * deltaTime;
-				//printf("avanza%f \n ",movCoche);
-				rotllanta += rotllantaOffset * deltaTime;//para que no giren las llantas
-			}
-			else {
-				avanza = !avanza;
-			}
-		}
-		else {
-			if (movCoche < 290) {
-
-				movCoche += movOffset * deltaTime;
-				//printf("avanza%f \n ",movCoche);
-				rotllanta -= rotllantaOffset * deltaTime;//para que no giren las llantas
-			}
-			else {
-				avanza = !avanza;
-			}
-		}
-
-		//Instancia del coche
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(movCoche, 0.5f, -3.0f));
-		modelaux = model;
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Kitt_M.RenderModel();
-
-		//Llanta delantera izquierda
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		color = glm::vec3(0.5f, 0.5f, 0.5f);//llanta con color gris
-		glUniform3fv(uniformColor, 1, glm::value_ptr(color));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-		//Llanta trasera izquierda
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 8.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-		//Llanta delantera derecha
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(7.0f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, -rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-		//Llanta trasera derecha
-		model = modelaux;
-		model = glm::translate(model, glm::vec3(15.5f, -0.5f, 1.5f));
-		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		model = glm::rotate(model, -rotllanta * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
-		model = glm::scale(model, glm::vec3(0.4f, 0.4f, 0.4f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Llanta_M.RenderModel();
-
-		////Loop mientras no se cierra la ventana
-GLfloat movimientoCajaMadera = 0.0f;
-GLfloat movimientoCajaMaderaOffset = 0.3f;
-GLfloat rotarLlantasCajaMadera = 0.0f;
-GLfloat rotarLlantasCajaMaderaOffset = 5.0f;
-bool avanzaCajaMadera = true;
-
-		*/
-
-		/*
+		
 
 		if (avanzaCajaMadera) {
 			if (movimientoCajaMadera >= -433.0f) {
@@ -2869,16 +2783,6 @@ bool avanzaCajaMadera = true;
 		model = glm::scale(model, glm::vec3(11.0f, 11.0f, 11.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
-		//Para apagar el pollo
-		if (periodoUso <= 225  && periodoUso <= 235) {
-			pointLightsLuciernagas[0].positionPoint(glm::vec3(460.0f, 20.0f, -200.0f));
-			shaderList[0].SetPointLights(pointLightsLuciernagas, pointLightCountLuciernagas);
-		}
-		else {
-			pointLightsLuciernagas[0].positionPoint(glm::vec3(460.0f, 20.0f, -200.0f));
-			shaderList[0].SetPointLights(pointLightsLuciernagas, pointLightCountLuciernagas - 1);
-		}
-
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -2887,7 +2791,6 @@ bool avanzaCajaMadera = true;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
 
-		pointLightsLuciernagas[1].positionPoint(glm::vec3(490.0f, 20.0f, -200.0f));
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -2896,7 +2799,6 @@ bool avanzaCajaMadera = true;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
 
-		pointLightsLuciernagas[2].positionPoint(glm::vec3(520.0f, 20.0f, -200.0f));
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -2905,7 +2807,6 @@ bool avanzaCajaMadera = true;
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Bambu_M.RenderModel();
 
-		pointLightsLuciernagas[3].positionPoint(glm::vec3(550.0f, 20.0f, -200.0f));
 
 		//bambu
 		model = glm::mat4(1.0);
@@ -3034,15 +2935,168 @@ bool avanzaCajaMadera = true;
 		PuenteFP_M.RenderModel();
 
 		////////////////////////////////////////////////////////////////////////////////////////
+		
 		//poste
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-200.0f, 31.0f, -200.0f));
+		model = glm::translate(model, glm::vec3(-200.0f, 31.0f, -500.0f));
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		poste_M.RenderModel();
+
+		//poste
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-240.0f, 31.0f, -500.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		poste_M.RenderModel();
+
+		//poste
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-380.0f, 31.0f, -500.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		poste_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(400.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(350.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(300.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(250.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(150.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(100.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(50.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+		/////
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-400.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-350.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-300.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-250.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-150.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-100.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+
+		//lampara
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-50.0f, 0.0f, -200.0f));
+		model = glm::scale(model, glm::vec3(20.0f, 20.0f, 20.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		lampara_M.RenderModel();
+
+		//perry
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(400.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		perry_M.RenderModel();
+
 		//////////////////////////////////////////////////////////////////////////////////////
-		*/
+		
 		
 		/////////////////////////////////////////////////////////////////////////////////////////////////
 		
