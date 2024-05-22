@@ -142,6 +142,10 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		theWindow->movJP = true;
 	}
+	if (key == GLFW_KEY_P)
+	{
+		theWindow->movAr = true;
+	}
 
 	///cambio noche 
 	//para apgar la luz

@@ -19,6 +19,8 @@ public:
 
 	~PointLight();
 
+	void setPosition(GLfloat x, GLfloat y, GLfloat z);
+
 protected:
 	glm::vec3 position;
 

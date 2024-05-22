@@ -43,3 +43,10 @@ void PointLight::positionPoint(glm::vec3 pos)
 PointLight::~PointLight()
 {
 }
+
+void PointLight::setPosition(GLfloat x, GLfloat y, GLfloat z)
+{
+	this->position.x = x;
+	this->position.y = y;
+	this->position.z = z;
+}
