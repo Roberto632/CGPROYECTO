@@ -22,6 +22,9 @@ public:
 	//animacion jetpack
 	GLfloat animJP() { return movJP; }
 
+	//animacion arbusto
+	GLfloat animAr() { return movAr; }
+
 	//Animaciones Gumball
 	GLfloat getmovArana() { return movArana; }
 	GLfloat getr1() { return r1; }
@@ -53,6 +56,8 @@ private:
 	bool movZ1 = false;
 
 	bool movJP = false;
+
+	bool movAr = false;
 
 	//Animaciones Gumball
 	bool juego = false;
