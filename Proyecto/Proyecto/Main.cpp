@@ -204,6 +204,14 @@ GLfloat rotarLlantasCajaMaderaOffset = 5.0f;
 bool avanzaCajaMadera = true;
 //>>>>>>> 96256336d13de02933bd449444bf4c16d1a55335
 
+Model nave_M;
+GLfloat movimientoNave = 0.0f;
+GLfloat movimientoNaveOffset = 0.7f;
+GLfloat movimientoNaveAlto = 0.0f;
+GLfloat movimientoNaveAltoOffset = 0.3f;
+GLfloat rotarNave = 0.0f;
+GLfloat rotarNaveOffset = 5.0f;
+bool avanzarNave = true;
 
 //skyboxs para cada perio del dia: dia, tarde, noche, amanecer
 Skybox skyboxDia;
@@ -626,6 +634,10 @@ int main()
 
 	perry_M = Model();
 	perry_M.LoadModel("Models/Roberto/PERRYFINAL.obj");
+
+
+	nave_M = Model();
+	nave_M.LoadModel("Models/Roberto/NavePF.obj");
 
 
 	//se cargan nuestras skybox
@@ -2475,7 +2487,35 @@ int main()
 
 		//////////////////////////////////////////////////////////////////////////////
 
+		if (avanzarNave) {
+			if (movimientoNave >= -633.0f) {
+				movimientoNave -= movimientoNaveOffset * deltaTime;
+				rotarNave += rotarNaveOffset * deltaTime;
+			}
+			else {
+				avanzarNave = !avanzarNave;
+			}
+		}
+		else {
+			if (movimientoNave <= 233.0f) {
 
+				movimientoNave += movimientoNaveOffset * deltaTime;
+				rotarNave += rotarNaveOffset * deltaTime;
+			}
+			else {
+				avanzarNave = !avanzarNave;
+			}
+		}
+
+		//nave
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(400.0f, 100.0f, -400.0f));
+		model = glm::translate(model, glm::vec3(movimientoNave, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		nave_M.RenderModel();
 		
 
 		if (avanzaCajaMadera) {
