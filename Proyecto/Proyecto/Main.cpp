@@ -232,6 +232,8 @@ PointLight pointLights[MAX_POINT_LIGHTS];
 PointLight pointLightsJ[MAX_POINT_LIGHTS];
 SpotLight spotLights[MAX_SPOT_LIGHTS];
 
+SpotLight spotLightsInator[MAX_SPOT_LIGHTS];
+
 //para las luciernagas
 PointLight pointLightsLuciernagas[MAX_POINT_LIGHTS];
 PointLight pointLightsLuciernagas1[MAX_POINT_LIGHTS];
@@ -737,7 +739,15 @@ int main()
 	spotLightCount++;
 
 	//se crean mas luces puntuales y spotlight 
-
+	unsigned int spotLightCountInator = 0;
+	//linterna
+	spotLightsInator[0] = SpotLight(0.0f, 1.0f, 1.0f, //color
+		1.0f, 2.0f,
+		0.0f, 0.0f, 0.0f,//posición de la luz
+		1.0f, 0.65f, 0.0f,//direccion
+		0.1f, 0.0f, 0.0f, //para limitar
+		20.0f); //apertura 
+	spotLightCountInator++;
 
 	//contador de luces puntuales
 	unsigned int pointLightCountLuciernagas = 0;
@@ -860,7 +870,6 @@ int main()
 		//informaci�n al shader de fuentes de iluminaci�n
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
-		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
 
 		//Animaciones Gumball
@@ -2564,6 +2573,15 @@ int main()
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Inator_M.RenderModel();
+
+		if (mainWindow.getApagarIna() == 1.0f) {
+			spotLightsInator[0].SetPos(glm::vec3(490.0f, 43.0f, -98.0f));
+			shaderList[0].SetSpotLights(spotLightsInator, spotLightCountInator);
+		}
+		else {
+			shaderList[0].SetSpotLights(spotLightsInator, spotLightCountInator - 1);
+			shaderList[0].SetSpotLights(spotLights, spotLightCount);
+		}
 
 		//Banco de parque
 		model = glm::mat4(1.0);

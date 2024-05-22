@@ -32,7 +32,7 @@ public:
 
 	//para cambiar de dia a noche
 
-	GLfloat getCambioNoche() { return cambiaNoche; }
+	GLfloat getApagarIna() { return apagarLuzIna; }
 
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
@@ -65,7 +65,8 @@ private:
 	bool r1 = false;
 
 	//variable para cambiar de dia noche 
-	GLfloat cambiaNoche; 
+	GLfloat cambiaNoche;
+	GLfloat apagarLuzIna;
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);

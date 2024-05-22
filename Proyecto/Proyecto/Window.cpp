@@ -16,9 +16,8 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 	muevex = 2.0f;
 	movArana = 0.0f;
 
-	//cambio de noche +
 
-	cambiaNoche = 1.0f;
+	apagarLuzIna = 1.0f;
 
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -147,14 +146,12 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 		theWindow->movAr = true;
 	}
 
-	///cambio noche 
 	//para apgar la luz
 	if (key == GLFW_KEY_1 && action == GLFW_PRESS) {
-		theWindow->cambiaNoche = -1.0f * theWindow->cambiaNoche;
-
-		//printf("%f\n",theWindow->apagarLuz);
+		theWindow->apagarLuzIna = -1.0f * theWindow->apagarLuzIna;
+		//printf("%f", theWindow->apagarLuzIna);
 	}
-	///
+
 
 
 	if (key >= 0 && key < 1024)
