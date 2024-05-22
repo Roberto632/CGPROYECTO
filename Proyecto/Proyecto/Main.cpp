@@ -2592,6 +2592,35 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		LlantasPF_M.RenderModel();
 
+		if (avanzarNave) {
+			if (movimientoNave >= -633.0f) {
+				movimientoNave -= movimientoNaveOffset * deltaTime;
+				rotarNave += rotarNaveOffset * deltaTime;
+			}
+			else {
+				avanzarNave = !avanzarNave;
+			}
+		}
+		else {
+			if (movimientoNave <= 233.0f) {
+
+				movimientoNave += movimientoNaveOffset * deltaTime;
+				rotarNave += rotarNaveOffset * deltaTime;
+			}
+			else {
+				avanzarNave = !avanzarNave;
+			}
+		}
+
+		//nave
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(400.0f, 100.0f, -400.0f));
+		model = glm::translate(model, glm::vec3(movimientoNave, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
+		model = glm::rotate(model, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::rotate(model, rotarLlantasCajaMadera * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		nave_M.RenderModel();
 		//////////////////////////////////////////////////////////////////////////////
 
 		//edificio
