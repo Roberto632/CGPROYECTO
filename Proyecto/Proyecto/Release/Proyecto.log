@@ -5,48 +5,26 @@ C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Window.h(12,36): warning C
 C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Window.h(13,37): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
   (compilando archivo de origen "Main.cpp")
   
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(800,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(802,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(861,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(863,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(876,16): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(878,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(879,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(889,22): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(895,17): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(896,19): warning C4244: '-=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(905,17): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(906,19): warning C4244: '-=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(919,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(929,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(931,12): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(949,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(950,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-  PointLight.cpp
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(28,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(29,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(30,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(32,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(33,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(34,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\PointLight.cpp(35,14): warning C4244: 'argumento': conversión de 'GLfloat' a 'GLint'; posible pérdida de datos
-  Shader_light.cpp
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(207,75): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(207,26): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(206,91): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(206,42): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(220,98): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(220,62): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(220,24): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(219,70): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(219,24): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(218,88): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Shader_light.cpp(218,42): warning C4244: 'argumento': conversión de 'GLuint' a 'GLfloat'; posible pérdida de datos
-  Skybox.cpp
-  SpotLight.cpp
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(818,15): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(820,33): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(878,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(880,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(893,16): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(895,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(896,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(906,22): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(912,17): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(913,19): warning C4244: '-=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(922,17): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(923,19): warning C4244: '-=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(936,18): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(946,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(948,12): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(966,13): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Proyecto\Main.cpp(967,19): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   Generando código
-  2 of 1066 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
-    1 functions were new in current compilation
-    7 functions had inline decision re-evaluated but remain unchanged
+  205 of 1066 functions (19.2%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    29 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   Proyecto.vcxproj -> C:\Users\danny\Downloads\CGPROYECTO\Proyecto\Release\Proyecto.exe
